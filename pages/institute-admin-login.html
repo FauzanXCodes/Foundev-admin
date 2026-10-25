@@ -1,0 +1,117 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EE">
+
+    <title>Institute Administrator Login — Foundev</title>
+
+    <link rel="stylesheet" href="../css/auth.css">
+    <style>
+        .institute-login-note {
+            margin: 0 0 22px;
+            color: #686868;
+            font-size: 14px;
+            line-height: 1.6;
+        }
+
+        .institute-login-error {
+            color: #b42318;
+        }
+
+        .institute-login-success {
+            color: #167647;
+        }
+    </style>
+
+    <script src="../js/institute-admin-login.js" defer></script>
+</head>
+
+<body class="auth-page">
+
+<header class="auth-header">
+    <a href="../index.html" class="auth-brand" aria-label="Foundev home">
+        <img src="../assets/images/foundev-logo.png" alt="Foundev">
+    </a>
+
+    <p>
+        Are you a student?
+        <a href="login.html">Regular login</a>
+    </p>
+</header>
+
+<main class="verification-layout">
+    <section class="auth-card login-card">
+        <span class="auth-eyebrow">INSTITUTION PORTAL</span>
+
+        <h1>Welcome back.</h1>
+
+        <p class="login-description">
+            Sign in to manage your institution on Foundev.
+        </p>
+
+        <p class="institute-login-note">
+            Use the official email address associated with your approved
+            institution and the password you created during invitation signup.
+        </p>
+
+        <form
+            id="institute-admin-login-form"
+            class="auth-form"
+            action="../backend/auth/institute-admin-login.php"
+            method="post"
+        >
+            <label for="institute-admin-email">Official email address</label>
+
+            <input
+                id="institute-admin-email"
+                name="email"
+                type="email"
+                placeholder="admin@institution.edu"
+                autocomplete="username"
+                maxlength="254"
+                required
+            >
+
+            <label for="institute-admin-password">Password</label>
+
+            <input
+                id="institute-admin-password"
+                name="password"
+                type="password"
+                placeholder="Enter your password"
+                autocomplete="current-password"
+                required
+            >
+
+            <button
+                type="submit"
+                class="auth-submit"
+                id="institute-admin-login-submit"
+            >
+                Sign in to institution portal
+            </button>
+
+            <p
+                class="form-message"
+                id="institute-admin-login-message"
+                role="status"
+                aria-live="polite"
+            ></p>
+        </form>
+
+        <p class="institute-login-note">
+            Access is available only to registered institute administrators.
+            If your institution has not been approved, contact Foundev support.
+        </p>
+    </section>
+</main>
+
+<footer class="auth-footer">
+    © <span data-current-year>2026</span> Foundev
+</footer>
+
+</body>
+</html>

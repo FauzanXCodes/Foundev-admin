@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EF">
+
+    <title>Student Sign Up | Foundev</title>
+
+    <meta
+        name="description"
+        content="Create your Foundev institution student account to build teams and apply for projects."
+    >
+
+    <!-- Stylesheet -->
+    <link rel="stylesheet" href="../css/institute-student-auth.css">
+
+    <!-- Signup JavaScript -->
+    <script src="../js/institute-student-signup.js" defer></script>
+</head>
+
+<body class="student-auth-page">
+
+    <main class="auth-shell">
+
+        <!-- LEFT: BRAND PANEL -->
+        <section class="auth-brand-panel">
+
+            <a class="auth-brand" href="../index.html" aria-label="Foundev home">
+                <img
+                    src="../assets/images/foundev-logo.png"
+                    alt="Foundev logo"
+                    class="auth-logo"
+                >
+                <span>Foundev</span>
+            </a>
+
+            <div class="auth-brand-content">
+
+                <span class="auth-eyebrow">
+                    YOUR JOURNEY STARTS HERE
+                </span>
+
+                <h1>
+                    Learn.<br>
+                    Build.<br>
+                    <span>Launch.</span>
+                </h1>
+
+                <p>
+                    Turn your ideas into real projects. Build a team,
+                    collaborate with fellow students, and learn by creating.
+                </p>
+
+                <div class="auth-feature-list">
+
+                    <div class="auth-feature">
+                        <span class="auth-feature-icon">01</span>
+                        <div>
+                            <strong>Build your team</strong>
+                            <p>Bring your classmates together.</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <span class="auth-feature-icon">02</span>
+                        <div>
+                            <strong>Explore projects</strong>
+                            <p>Find projects that match your goals.</p>
+                        </div>
+                    </div>
+
+                    <div class="auth-feature">
+                        <span class="auth-feature-icon">03</span>
+                        <div>
+                            <strong>Build your future</strong>
+                            <p>Learn through practical experience.</p>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <p class="auth-brand-footer">
+                Education works together.
+            </p>
+
+        </section>
+
+
+        <!-- RIGHT: SIGNUP AND OTP PANEL -->
+        <section class="auth-form-panel">
+
+            <div class="auth-form-container">
+
+                <!-- Mobile brand -->
+                <div class="auth-mobile-brand">
+                    <a class="auth-brand" href="../index.html">
+                        <img
+                            src="../assets/images/foundev-logo.png"
+                            alt="Foundev logo"
+                            class="auth-logo"
+                        >
+                        <span>Foundev</span>
+                    </a>
+                </div>
+
+
+                <!-- SHARED ALERT -->
+                <div
+                    id="signup-alert"
+                    class="auth-alert"
+                    role="alert"
+                    aria-live="polite"
+                    hidden
+                ></div>
+
+
+                <!-- =========================================
+                     STEP 1: STUDENT SIGNUP FORM
+                     ========================================= -->
+
+                <div class="auth-heading" id="signup-heading">
+
+                    <span class="auth-eyebrow">
+                        STUDENT WORKSPACE
+                    </span>
+
+                    <h2>Create your account</h2>
+
+                    <p>
+                        Register with your institution details to get started.
+                    </p>
+
+                </div>
+
+
+                <form id="student-signup-form" novalidate>
+
+                    <!-- Full name -->
+                    <div class="auth-field">
+
+                        <label for="student-name">
+                            Full name
+                        </label>
+
+                        <input
+                            type="text"
+                            id="student-name"
+                            name="student_name"
+                            placeholder="Enter your full name"
+                            autocomplete="name"
+                            maxlength="120"
+                            required
+                        >
+
+                    </div>
+
+
+                    <!-- Email -->
+                    <div class="auth-field">
+
+                        <label for="student-email">
+                            Email address
+                        </label>
+
+                        <input
+                            type="email"
+                            id="student-email"
+                            name="email"
+                            placeholder="you@example.com"
+                            autocomplete="email"
+                            maxlength="190"
+                            required
+                        >
+
+                        <small>
+                            Use an email address you can access to receive
+                            your verification code.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Institution -->
+                    <div class="auth-field">
+
+                        <label for="student-institution">
+                            Institution
+                        </label>
+
+                        <select
+                            id="student-institution"
+                            name="institution_id"
+                            required
+                        >
+                            <option value="">
+                                Loading institutions...
+                            </option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- Roll number and course -->
+                    <div class="auth-form-row">
+
+                        <div class="auth-field">
+
+                            <label for="student-roll-number">
+                                Roll number
+                            </label>
+
+                            <input
+                                type="text"
+                                id="student-roll-number"
+                                name="roll_number"
+                                placeholder="Your roll number"
+                                maxlength="60"
+                                autocomplete="off"
+                                required
+                            >
+
+                        </div>
+
+
+                        <div class="auth-field">
+
+                            <label for="student-course">
+                                Course / branch
+                            </label>
+
+                            <input
+                                type="text"
+                                id="student-course"
+                                name="course"
+                                placeholder="e.g. CSE"
+                                maxlength="120"
+                                required
+                            >
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Academic year -->
+                    <div class="auth-field">
+
+                        <label for="student-year">
+                            Academic year
+                        </label>
+
+                        <select
+                            id="student-year"
+                            name="academic_year"
+                            required
+                        >
+                            <option value="">
+                                Select academic year
+                            </option>
+
+                            <option value="1">1st Year</option>
+                            <option value="2">2nd Year</option>
+                            <option value="3">3rd Year</option>
+                            <option value="4">4th Year</option>
+                            <option value="5">5th Year</option>
+                        </select>
+
+                    </div>
+
+
+                    <!-- Password -->
+                    <div class="auth-field">
+
+                        <label for="student-password">
+                            Password
+                        </label>
+
+                        <div class="auth-password-wrap">
+
+                            <input
+                                type="password"
+                                id="student-password"
+                                name="password"
+                                placeholder="Create a strong password"
+                                autocomplete="new-password"
+                                minlength="8"
+                                maxlength="128"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="auth-password-toggle"
+                                data-toggle-password="student-password"
+                                aria-label="Show password"
+                                aria-pressed="false"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                        <small>
+                            Use at least 8 characters.
+                        </small>
+
+                    </div>
+
+
+                    <!-- Confirm password -->
+                    <div class="auth-field">
+
+                        <label for="student-confirm-password">
+                            Confirm password
+                        </label>
+
+                        <div class="auth-password-wrap">
+
+                            <input
+                                type="password"
+                                id="student-confirm-password"
+                                name="confirm_password"
+                                placeholder="Enter your password again"
+                                autocomplete="new-password"
+                                minlength="8"
+                                maxlength="128"
+                                required
+                            >
+
+                            <button
+                                type="button"
+                                class="auth-password-toggle"
+                                data-toggle-password="student-confirm-password"
+                                aria-label="Show password"
+                                aria-pressed="false"
+                            >
+                                Show
+                            </button>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- Terms and privacy -->
+                    <label class="auth-checkbox" for="student-terms">
+
+                        <input
+                            type="checkbox"
+                            id="student-terms"
+                            name="accept_terms"
+                            required
+                        >
+
+                        <span>
+                            I confirm that my information is accurate and
+                            agree to Foundev's
+                            <a href="../pages/terms.html">Terms</a>
+                            and
+                            <a href="../pages/privacy.html">Privacy Policy</a>.
+                        </span>
+
+                    </label>
+
+
+                    <!-- Signup button -->
+                    <button
+                        type="submit"
+                        id="student-signup-submit"
+                        class="auth-submit"
+                    >
+                        <span>Create student account</span>
+                        <span aria-hidden="true">→</span>
+                    </button>
+
+
+                    <p class="auth-form-note">
+                        A verification code will be sent to your email
+                        before registration is completed.
+                    </p>
+
+                </form>
+
+
+                <!-- =========================================
+                     STEP 2: EMAIL OTP VERIFICATION
+                     This section appears after signup succeeds.
+                     ========================================= -->
+
+                <section
+                    id="student-otp-section"
+                    hidden
+                    aria-labelledby="otp-heading"
+                >
+
+                    <div class="auth-heading">
+
+                        <span class="auth-eyebrow">
+                            EMAIL VERIFICATION
+                        </span>
+
+                        <h2 id="otp-heading">
+                            Verify your student email
+                        </h2>
+
+                        <p>
+                            Enter the 6-digit verification code sent to
+                            <strong id="otp-email-display"></strong>.
+                        </p>
+
+                    </div>
+
+
+                    <form id="student-otp-form" novalidate>
+
+                        <!-- OTP input: THIS IS WHERE YOU ENTER THE CODE -->
+                        <div class="auth-field">
+
+                            <label for="student-email-otp">
+                                Verification code
+                            </label>
+
+                            <input
+                                type="text"
+                                id="student-email-otp"
+                                name="otp"
+                                inputmode="numeric"
+                                autocomplete="one-time-code"
+                                pattern="[0-9]{6}"
+                                minlength="6"
+                                maxlength="6"
+                                placeholder="000000"
+                                aria-describedby="otp-help"
+                                required
+                            >
+
+                            <small id="otp-help">
+                                Enter the latest 6-digit code from your email.
+                            </small>
+
+                        </div>
+
+
+                        <!-- Verify OTP -->
+                        <button
+                            type="submit"
+                            id="student-otp-verify"
+                            class="auth-submit"
+                        >
+                            <span>Verify email</span>
+                            <span aria-hidden="true">→</span>
+                        </button>
+
+
+                        <!-- Resend OTP -->
+                        <button
+                            type="button"
+                            id="student-otp-resend"
+                            class="auth-secondary-button"
+                            disabled
+                        >
+                            Resend verification code
+                        </button>
+
+
+                        <!-- Back button -->
+                        <button
+                            type="button"
+                            id="student-otp-back"
+                            class="auth-text-button"
+                        >
+                            ← Back to signup
+                        </button>
+
+                    </form>
+
+                </section>
+
+
+                <!-- Login link -->
+                <div class="auth-switch" id="auth-switch">
+                    Already have a student account?
+                    <a href="institute-student-login.html">Log in</a>
+                </div>
+
+
+                <!-- Back to home -->
+                <div class="auth-back-link">
+                    <a href="../index.html">← Back to Foundev</a>
+                </div>
+
+            </div>
+
+        </section>
+
+    </main>
+
+</body>
+</html>

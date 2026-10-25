@@ -1,0 +1,495 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EE">
+    <title>Choose Your Path | Foundev</title>
+
+    <!-- Foundev Design System -->
+    <link rel="stylesheet" href="../css/styles.css">
+
+    <style>
+        .path-page {
+            min-height: 100vh;
+            background: var(--color-bg, #F7F4EE);
+            color: var(--color-ink, #1F150C);
+        }
+
+        .path-header {
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            padding: 18px var(--page-gutter, 5vw);
+            border-bottom: 1px solid var(--color-border, rgba(31,21,12,.13));
+            background: rgba(247,244,238,.88);
+            backdrop-filter: blur(18px);
+        }
+
+        .path-header-inner {
+            max-width: 1240px;
+            margin: auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+        }
+
+        .path-logo {
+            color: var(--color-ink, #1F150C);
+            font-size: 29px;
+            font-weight: 750;
+            letter-spacing: -.075em;
+            text-decoration: none;
+        }
+
+        .path-logo span {
+            color: var(--color-brown, #412D15);
+        }
+
+        .path-header-note {
+            color: var(--color-muted, #766D60);
+            font-size: 12px;
+        }
+
+        .path-main {
+            width: min(1240px, calc(100% - 2 * var(--page-gutter, 5vw)));
+            margin: auto;
+            padding: clamp(65px, 9vw, 115px) 0 110px;
+        }
+
+        .path-intro {
+            max-width: 760px;
+            margin: 0 auto 62px;
+            text-align: center;
+        }
+
+        .path-eyebrow {
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            margin-bottom: 23px;
+            color: var(--color-muted, #766D60);
+            font-family: var(--font-mono, monospace);
+            font-size: 10px;
+            letter-spacing: .13em;
+            text-transform: uppercase;
+        }
+
+        .path-eyebrow::before {
+            content: "";
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: var(--color-brown, #412D15);
+        }
+
+        .path-intro h1 {
+            margin: 0 0 22px;
+            font-size: clamp(43px, 6.5vw, 76px);
+            font-weight: 600;
+            line-height: 1;
+            letter-spacing: -.075em;
+        }
+
+        .path-intro h1 span {
+            color: var(--color-muted, #766D60);
+        }
+
+        .path-intro p {
+            max-width: 570px;
+            margin: auto;
+            color: var(--color-muted, #766D60);
+            font-size: 15px;
+            line-height: 1.9;
+        }
+
+        .path-grid {
+            display: grid;
+            grid-template-columns: repeat(3, minmax(0, 1fr));
+            gap: 22px;
+            align-items: stretch;
+        }
+
+        .path-card {
+            min-width: 0;
+            display: flex;
+            flex-direction: column;
+            padding: 29px 27px 26px;
+            border: 1px solid var(--color-border, rgba(31,21,12,.13));
+            border-radius: var(--radius-lg, 28px);
+            background: var(--color-surface, #FFFEFA);
+            transition:
+                transform .3s cubic-bezier(.22,1,.36,1),
+                border-color .25s ease,
+                box-shadow .25s ease;
+        }
+
+        .path-card:hover {
+            transform: translateY(-6px);
+            border-color: var(--color-border-strong, rgba(31,21,12,.24));
+            box-shadow: var(--shadow-card, 0 20px 60px rgba(31,21,12,.075));
+        }
+
+        .path-card-featured {
+            background: var(--color-ink, #1F150C);
+            color: var(--color-bg, #F7F4EE);
+            border-color: var(--color-ink, #1F150C);
+        }
+
+        .path-card-featured:hover {
+            border-color: var(--color-brown, #412D15);
+        }
+
+        .path-card-top {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            margin-bottom: 37px;
+        }
+
+        .path-icon {
+            width: 49px;
+            height: 49px;
+            display: grid;
+            place-items: center;
+            border-radius: 15px;
+            background: var(--color-surface-muted, #E1DCC9);
+            color: var(--color-brown, #412D15);
+        }
+
+        .path-icon svg {
+            width: 23px;
+            height: 23px;
+            fill: none;
+            stroke: currentColor;
+            stroke-width: 1.6;
+            stroke-linecap: round;
+            stroke-linejoin: round;
+        }
+
+        .path-card-featured .path-icon {
+            background: var(--color-brown, #412D15);
+            color: var(--color-bg, #F7F4EE);
+        }
+
+        .path-number {
+            color: var(--color-muted, #766D60);
+            font-family: var(--font-mono, monospace);
+            font-size: 10px;
+            letter-spacing: .1em;
+        }
+
+        .path-card-featured .path-number {
+            color: #C9BDAA;
+        }
+
+        .path-card h2 {
+            margin: 0 0 15px;
+            font-size: clamp(23px, 2.2vw, 30px);
+            font-weight: 600;
+            line-height: 1.15;
+            letter-spacing: -.055em;
+        }
+
+        .path-tagline {
+            margin: 0 0 19px;
+            color: var(--color-brown, #412D15);
+            font-size: 13px;
+            font-weight: 650;
+        }
+
+        .path-card-featured .path-tagline {
+            color: var(--color-surface-muted, #E1DCC9);
+        }
+
+        .path-description {
+            flex: 1;
+            margin: 0 0 29px;
+            color: var(--color-muted, #766D60);
+            font-size: 13px;
+            line-height: 1.9;
+        }
+
+        .path-card-featured .path-description {
+            color: #D1C8BB;
+        }
+
+        .path-divider {
+            height: 1px;
+            margin-bottom: 22px;
+            background: var(--color-border, rgba(31,21,12,.13));
+        }
+
+        .path-card-featured .path-divider {
+            background: rgba(247,244,238,.17);
+        }
+
+        .path-cta {
+            min-height: 49px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 12px;
+            padding: 0 17px;
+            border: 1px solid var(--color-ink, #1F150C);
+            border-radius: var(--radius-pill, 999px);
+            background: var(--color-ink, #1F150C);
+            color: var(--color-bg, #F7F4EE);
+            font-size: 12px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: background .2s ease, color .2s ease;
+        }
+
+        .path-cta:hover {
+            background: transparent;
+            color: var(--color-ink, #1F150C);
+        }
+
+        .path-cta span {
+            font-size: 17px;
+            transition: transform .2s ease;
+        }
+
+        .path-cta:hover span {
+            transform: translate(3px, -2px);
+        }
+
+        .path-card-featured .path-cta {
+            border-color: var(--color-bg, #F7F4EE);
+            background: var(--color-bg, #F7F4EE);
+            color: var(--color-ink, #1F150C);
+        }
+
+        .path-card-featured .path-cta:hover {
+            background: transparent;
+            color: var(--color-bg, #F7F4EE);
+        }
+
+        .path-bottom {
+            margin-top: 66px;
+            text-align: center;
+        }
+
+        .path-bottom p {
+            margin: 0;
+            color: var(--color-muted, #766D60);
+            font-size: 12px;
+        }
+
+        .path-footer {
+            display: flex;
+            justify-content: space-between;
+            gap: 20px;
+            padding: 24px var(--page-gutter, 5vw);
+            border-top: 1px solid var(--color-border, rgba(31,21,12,.13));
+            color: var(--color-muted, #766D60);
+            font-size: 11px;
+        }
+
+        @media (max-width: 960px) {
+            .path-grid {
+                grid-template-columns: 1fr;
+                max-width: 650px;
+                margin: auto;
+            }
+
+            .path-card {
+                padding: 28px;
+            }
+
+            .path-card-top {
+                margin-bottom: 25px;
+            }
+
+            .path-card h2 {
+                font-size: 29px;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .path-header {
+                padding-block: 14px;
+            }
+
+            .path-logo {
+                font-size: 26px;
+            }
+
+            .path-header-note {
+                font-size: 10px;
+            }
+
+            .path-main {
+                padding-top: 65px;
+                padding-bottom: 75px;
+            }
+
+            .path-intro {
+                margin-bottom: 39px;
+                text-align: left;
+            }
+
+            .path-intro h1 {
+                font-size: clamp(42px, 12vw, 58px);
+            }
+
+            .path-intro p {
+                font-size: 14px;
+            }
+
+            .path-card {
+                padding: 24px 22px;
+            }
+
+            .path-bottom {
+                margin-top: 42px;
+            }
+
+            .path-footer {
+                flex-direction: column;
+            }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after {
+                scroll-behavior: auto !important;
+                animation-duration: .01ms !important;
+                transition-duration: .01ms !important;
+            }
+        }
+    </style>
+</head>
+
+<body class="path-page">
+
+    <header class="path-header">
+        <div class="path-header-inner">
+            <a class="path-logo" href="../index.html" aria-label="Foundev home">
+                foundev<span>.</span>
+            </a>
+            <span class="path-header-note">Learn. Build. Launch.</span>
+        </div>
+    </header>
+
+    <main class="path-main">
+
+        <section class="path-intro">
+            <div class="path-eyebrow">WELCOME TO FOUNDEV</div>
+            <h1>What would you like<br><span>to do today?</span></h1>
+            <p>
+                Every great project starts somewhere. Choose your path
+                and take the next step toward turning your ideas into reality.
+            </p>
+        </section>
+
+        <section class="path-grid" aria-label="Choose your Foundev journey">
+
+            <!-- OPTION 1: EXPLORE PROJECTS -->
+            <article class="path-card">
+                <div class="path-card-top">
+                    <div class="path-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+                        </svg>
+                    </div>
+                    <span class="path-number">01 / EXPLORE</span>
+                </div>
+
+                <h2>Looking for a Project?</h2>
+                <p class="path-tagline">Explore. Choose. Build.</p>
+                <p class="path-description">
+                    Find the right mini project or major project for your
+                    academic goals. Explore curated project ideas, discover
+                    the technologies behind them, and follow a structured
+                    roadmap to turn your chosen project into a working application.
+                </p>
+
+                <div class="path-divider"></div>
+
+                <a class="path-cta" href="../pages/projects.html">
+                    Explore Projects <span aria-hidden="true">↗</span>
+                </a>
+            </article>
+
+            <!-- OPTION 2: START BUILDING -->
+            <article class="path-card path-card-featured">
+                <div class="path-card-top">
+                    <div class="path-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="m12 3 1.9 5.8L20 11l-6.1 2.2L12 19l-2-5.8L4 11l6-2.2L12 3Z"/>
+                            <path d="m19 14 1.1 3.1L23 18l-2.9 1L19 22l-1-3-3-1 3-.9L19 14Z"/>
+                        </svg>
+                    </div>
+                    <span class="path-number">02 / CREATE</span>
+                </div>
+
+                <h2>Got an Idea?</h2>
+                <p class="path-tagline">Imagine. Build. Launch.</p>
+                <p class="path-description">
+                    Have an idea but don't know where to start? Bring it to
+                    Foundev. Our specialized AI agents help break your idea
+                    into manageable steps, explain technologies, improve code,
+                    solve problems, and guide you from your first line of code
+                    to a working product.
+                </p>
+
+                <div class="path-divider"></div>
+
+                <a class="path-cta" href="../pages/start-building.html">
+                    Start Building <span aria-hidden="true">↗</span>
+                </a>
+            </article>
+
+            <!-- OPTION 3: STUDENT FREELANCERS -->
+            <article class="path-card">
+                <div class="path-card-top">
+                    <div class="path-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="9" cy="8" r="3.5"/>
+                            <path d="M2.5 20v-1.5A5.5 5.5 0 0 1 8 13h2a5.5 5.5 0 0 1 5.5 5.5V20"/>
+                            <path d="M16 4.8a3.5 3.5 0 0 1 0 6.5"/>
+                            <path d="M18 13.5a5.5 5.5 0 0 1 3.5 5.1V20"/>
+                        </svg>
+                    </div>
+                    <span class="path-number">03 / COLLABORATE</span>
+                </div>
+
+                <h2>Looking for Student Freelancers?</h2>
+                <p class="path-tagline">Find talent. Collaborate. Deliver.</p>
+                <p class="path-description">
+                    Need help bringing a project to life? Connect with talented
+                    student freelancers who can help with web development,
+                    app development, UI/UX design, and more. Discover emerging
+                    talent, collaborate on real-world work, and turn your
+                    requirements into results.
+                </p>
+
+                <div class="path-divider"></div>
+
+                <a class="path-cta" href="../pages/freelancers.html">
+                    Find Student Talent <span aria-hidden="true">↗</span>
+                </a>
+            </article>
+
+        </section>
+
+        <section class="path-bottom">
+            <p>Not sure where to start? You can explore all three paths at your own pace.</p>
+        </section>
+
+    </main>
+
+    <footer class="path-footer">
+        <span>foundev. — Learn. Build. Launch.</span>
+        <span>One ecosystem. Many possibilities.</span>
+    </footer>
+
+</body>
+</html>

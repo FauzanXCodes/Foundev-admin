@@ -1,0 +1,707 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EE">
+
+    <meta
+        name="description"
+        content="Partner with Foundev to bring structured project-based learning, AI assistance, and mentor collaboration to your institution."
+    >
+
+    <title>Institute Partnership | Foundev</title>
+
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/institute-onboarding.css">
+    <script src="../js/institute-onboarding.js" defer></script>
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="header-inner">
+            <a href="../index.html" class="brand" aria-label="Foundev home">
+                <img
+                    src="../assets/images/foundev-logo.png"
+                    alt="Foundev"
+                    class="brand-logo"
+                >
+            </a>
+
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="../index.html#projects">Explore</a>
+                <a href="../index.html#journey">How it works</a>
+                <a href="../index.html#colleges">For colleges</a>
+            </nav>
+
+            <div class="header-buttons">
+                <a href="login.html" class="login-link">Log in</a>
+                <a href="../index.html" class="join-button">
+                    Foundev home <span aria-hidden="true">↗</span>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <main id="institute-onboarding">
+        <section class="intro">
+            <span class="eyebrow">FOUNDEV / INSTITUTIONAL PARTNERSHIPS</span>
+
+            <h1>
+                Bring practical learning
+                <span>to your institution.</span>
+            </h1>
+
+            <p>
+                Give your students a structured environment to build
+                real projects, understand code with AI, and collaborate
+                with mentors. Start your institution's partnership
+                application with Foundev.
+            </p>
+
+            <div class="trust-points">
+                <span>✓ Structured project learning</span>
+                <span>✓ AI-assisted development</span>
+                <span>✓ Mentor collaboration</span>
+            </div>
+        </section>
+
+        <section class="application-card" aria-labelledby="application-title">
+            <div class="card-heading">
+                <div>
+                    <span class="eyebrow">PARTNERSHIP APPLICATION</span>
+                    <h2 id="application-title">Tell us about your institution.</h2>
+                    <p>
+                        Complete the six steps below to prepare your
+                        partnership application.
+                    </p>
+                </div>
+
+                <span
+                    class="step-counter"
+                    id="step-counter"
+                    aria-live="polite"
+                >01 / 06</span>
+            </div>
+
+            <div
+                class="progress-track"
+                id="progress-track"
+                role="progressbar"
+                aria-label="Application progress"
+                aria-valuemin="1"
+                aria-valuemax="6"
+                aria-valuenow="1"
+            >
+                <span id="progress-bar"></span>
+            </div>
+
+            <div class="step-labels" aria-hidden="true">
+                <span class="active" data-label-step="0">Institute</span>
+                <span data-label-step="1">Details</span>
+                <span data-label-step="2">Academics</span>
+                <span data-label-step="3">Contact</span>
+                <span data-label-step="4">Verification</span>
+                <span data-label-step="5">Review</span>
+            </div>
+
+            <form id="institute-application-form" novalidate>
+                <!-- STEP 1: INSTITUTION -->
+                <section
+                    class="form-step active"
+                    data-step="0"
+                    aria-labelledby="step-one-title"
+                >
+                    <span class="step-kicker">STEP 01 / IDENTITY</span>
+                    <h3 id="step-one-title">What type of institution are you?</h3>
+                    <p class="section-description">
+                        Let's start with the identity of your institution.
+                    </p>
+
+                    <div class="field">
+                        <label for="institution_type">Institution type *</label>
+                        <select id="institution_type" name="institution_type" required>
+                            <option value="">Select institution type</option>
+                            <option value="college">College</option>
+                            <option value="university">University</option>
+                            <option value="engineering_college">Engineering college</option>
+                            <option value="polytechnic">Polytechnic</option>
+                            <option value="training_institute">Training institute</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <small class="field-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="official_name">Official registered name *</label>
+                        <input
+                            type="text"
+                            id="official_name"
+                            name="official_name"
+                            maxlength="200"
+                            autocomplete="organization"
+                            placeholder="e.g. ABC Institute of Technology"
+                            required
+                        >
+                        <small class="field-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="display_name">
+                            Display name <span class="optional">(optional)</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="display_name"
+                            name="display_name"
+                            maxlength="150"
+                            placeholder="Name displayed on Foundev"
+                        >
+                        <small class="field-error"></small>
+                    </div>
+                </section>
+
+                <!-- STEP 2: DETAILS -->
+                <section
+                    class="form-step"
+                    data-step="1"
+                    aria-labelledby="step-two-title"
+                    hidden
+                >
+                    <span class="step-kicker">STEP 02 / DETAILS</span>
+                    <h3 id="step-two-title">Where is your institution located?</h3>
+                    <p class="section-description">
+                        Provide the official registration and address details.
+                    </p>
+
+                    <div class="field">
+                        <label for="registration_number">
+                            Registration / recognition number *
+                        </label>
+                        <input
+                            type="text"
+                            id="registration_number"
+                            name="registration_number"
+                            maxlength="120"
+                            placeholder="Official registration number"
+                            required
+                        >
+                        <small class="field-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="website">
+                            Official website <span class="optional">(optional)</span>
+                        </label>
+                        <input
+                            type="url"
+                            id="website"
+                            name="website"
+                            maxlength="255"
+                            placeholder="https://your-institute.edu"
+                        >
+                        <small class="field-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="country">Country *</label>
+                        <input
+                            type="text"
+                            id="country"
+                            name="country"
+                            maxlength="100"
+                            value="India"
+                            autocomplete="country-name"
+                            required
+                        >
+                        <small class="field-error"></small>
+                    </div>
+
+                    <div class="field-row">
+                        <div class="field">
+                            <label for="state_region">State / Region *</label>
+                            <input
+                                type="text"
+                                id="state_region"
+                                name="state_region"
+                                maxlength="100"
+                                placeholder="Telangana"
+                                required
+                            >
+                            <small class="field-error"></small>
+                        </div>
+
+                        <div class="field">
+                            <label for="city">City *</label>
+                            <input
+                                type="text"
+                                id="city"
+                                name="city"
+                                maxlength="100"
+                                placeholder="Hyderabad"
+                                required
+                            >
+                            <small class="field-error"></small>
+                        </div>
+                    </div>
+
+                    <div class="field">
+                        <label for="postal_code">
+                            Postal code <span class="optional">(optional)</span>
+                        </label>
+                        <input
+                            type="text"
+                            id="postal_code"
+                            name="postal_code"
+                            maxlength="20"
+                            autocomplete="postal-code"
+                        >
+                        <small class="field-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="address">Registered address *</label>
+                        <textarea
+                            id="address"
+                            name="address"
+                            rows="3"
+                            maxlength="2000"
+                            autocomplete="street-address"
+                            placeholder="Full institution address"
+                            required
+                        ></textarea>
+                        <small class="field-error"></small>
+                    </div>
+                </section>
+
+                <!-- STEP 3: ACADEMICS -->
+                <section
+                    class="form-step"
+                    data-step="2"
+                    aria-labelledby="step-three-title"
+                    hidden
+                >
+                    <span class="step-kicker">STEP 03 / ACADEMICS</span>
+                    <h3 id="step-three-title">
+                        Tell us about your academic structure.
+                    </h3>
+                    <p class="section-description">
+                        Help us understand your students, faculty and programmes.
+                        These estimates are optional.
+                    </p>
+
+                    <div class="field">
+                        <label for="estimated_student_count">
+                            Estimated student population
+                        </label>
+                        <select
+                            id="estimated_student_count"
+                            name="estimated_student_count"
+                        >
+                            <option value="">Select a range</option>
+                            <option value="under_500">Under 500</option>
+                            <option value="500_1000">500–1,000</option>
+                            <option value="1001_5000">1,001–5,000</option>
+                            <option value="5001_10000">5,001–10,000</option>
+                            <option value="over_10000">Over 10,000</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="estimated_mentor_count">
+                            Estimated faculty / mentors
+                        </label>
+                        <select
+                            id="estimated_mentor_count"
+                            name="estimated_mentor_count"
+                        >
+                            <option value="">Select a range</option>
+                            <option value="under_25">Under 25</option>
+                            <option value="25_50">25–50</option>
+                            <option value="51_100">51–100</option>
+                            <option value="101_250">101–250</option>
+                            <option value="over_250">Over 250</option>
+                        </select>
+                    </div>
+
+                    <div class="field">
+                        <label for="department_summary">Departments / programmes</label>
+                        <textarea
+                            id="department_summary"
+                            name="department_summary"
+                            rows="4"
+                            maxlength="3000"
+                            placeholder="e.g. Computer Science, IT, Electronics, Business Administration"
+                        ></textarea>
+                        <small class="field-hint">
+                            You can configure individual departments,
+                            programmes and batches in the institute workspace
+                            after approval.
+                        </small>
+                    </div>
+                </section>
+
+                <!-- STEP 4: REPRESENTATIVE -->
+                <section
+                    class="form-step"
+                    data-step="3"
+                    aria-labelledby="step-four-title"
+                    hidden
+                >
+                    <span class="step-kicker">STEP 04 / REPRESENTATIVE</span>
+                    <h3 id="step-four-title">Who will represent your institution?</h3>
+                    <p class="section-description">
+                        Provide the contact details of a person authorised
+                        to communicate with Foundev.
+                    </p>
+
+                    <div class="field">
+                        <label for="representative_name">Full name *</label>
+                        <input
+                            type="text"
+                            id="representative_name"
+                            name="representative_name"
+                            maxlength="150"
+                            autocomplete="name"
+                            placeholder="Representative's full name"
+                            required
+                        >
+                        <small class="field-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="representative_designation">Designation *</label>
+                        <select
+                            id="representative_designation"
+                            name="representative_designation"
+                            required
+                        >
+                            <option value="">Select designation</option>
+                            <option value="principal">Principal</option>
+                            <option value="director">Director</option>
+                            <option value="dean">Dean</option>
+                            <option value="hod">Head of Department</option>
+                            <option value="it_administrator">IT Administrator</option>
+                            <option value="authorised_official">Authorised Official</option>
+                            <option value="other">Other</option>
+                        </select>
+                        <small class="field-error"></small>
+                    </div>
+
+                    <div class="field">
+                        <label for="official_email">Official email address *</label>
+                        <input
+                            type="email"
+                            id="official_email"
+                            name="official_email"
+                            maxlength="254"
+                            autocomplete="email"
+                            placeholder="representative@institution.edu"
+                            required
+                        >
+                        <small class="field-error"></small>
+                        <small class="field-hint">
+                            Foundev will use this address for application
+                            communication and email verification.
+                        </small>
+                    </div>
+
+                    <div class="field">
+                        <label for="official_phone">Contact phone number *</label>
+                        <input
+                            type="tel"
+                            id="official_phone"
+                            name="official_phone"
+                            maxlength="30"
+                            autocomplete="tel"
+                            placeholder="+91 98765 43210"
+                            required
+                        >
+                        <small class="field-error"></small>
+                    </div>
+                </section>
+
+                <!-- STEP 5: EMAIL VERIFICATION -->
+                <section
+                    class="form-step"
+                    data-step="4"
+                    aria-labelledby="step-five-title"
+                    hidden
+                >
+                    <span class="step-kicker">STEP 05 / VERIFICATION</span>
+                    <h3 id="step-five-title">Verify your official email.</h3>
+                    <p class="section-description">
+                        Before your application is submitted, we'll verify
+                        that you can access the representative email address.
+                    </p>
+
+                    <div class="verification-panel">
+                        <div class="verification-icon" aria-hidden="true">✉</div>
+
+                        <h4>Confirm your email address</h4>
+
+                        <p id="verification-email-preview">
+                            Your email address will appear here.
+                        </p>
+
+                        <p class="field-hint">
+                            We'll send a six-digit code to this address.
+                            The code expires after 10 minutes.
+                        </p>
+
+                        <span
+                            class="verification-status"
+                            id="verification-status"
+                            role="status"
+                            aria-live="polite"
+                        >Not verified</span>
+
+                        <div class="field verification-controls">
+                            <button
+                                type="button"
+                                class="button button-primary"
+                                id="send-otp-button"
+                            >
+                                Send verification code
+                            </button>
+                        </div>
+
+                        <div class="field" id="otp-entry-panel" hidden>
+                            <label for="email_otp">Six-digit verification code *</label>
+                            <input
+                                type="text"
+                                id="email_otp"
+                                name="email_otp"
+                                inputmode="numeric"
+                                autocomplete="one-time-code"
+                                pattern="[0-9]{6}"
+                                maxlength="6"
+                                placeholder="Enter 6-digit code"
+                                aria-describedby="otp-hint otp-error"
+                            >
+
+                            <small class="field-hint" id="otp-hint">
+                                Check your inbox and spam folder.
+                            </small>
+                            <small class="field-error" id="otp-error"></small>
+
+                            <div class="verification-controls">
+                                <button
+                                    type="button"
+                                    class="button button-primary"
+                                    id="verify-otp-button"
+                                >
+                                    Verify code
+                                </button>
+
+                                <button
+                                    type="button"
+                                    class="button button-secondary"
+                                    id="resend-otp-button"
+                                    disabled
+                                >
+                                    Resend code
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="notice">
+                        Email verification confirms access to an email
+                        address. It does not independently establish that
+                        the representative is authorised to act for the
+                        institution. Foundev may request supporting
+                        documentation during review.
+                    </div>
+                </section>
+
+                <!-- STEP 6: REVIEW -->
+                <section
+                    class="form-step"
+                    data-step="5"
+                    aria-labelledby="step-six-title"
+                    hidden
+                >
+                    <span class="step-kicker">STEP 06 / FINAL REVIEW</span>
+                    <h3 id="step-six-title">Review your application.</h3>
+                    <p class="section-description">
+                        Make sure your details are correct before submitting
+                        your partnership request.
+                    </p>
+
+                    <div
+                        id="review-summary"
+                        class="review-summary"
+                        aria-label="Application summary"
+                    ></div>
+
+                    <label class="consent-row" for="consent">
+                        <input
+                            type="checkbox"
+                            id="consent"
+                            name="consent"
+                            required
+                        >
+                        <span>
+                            I confirm that the information provided is
+                            accurate and that I am authorised to submit
+                            this application on behalf of the institution.
+                        </span>
+                    </label>
+
+                    <small class="field-error" id="consent-error"></small>
+
+                    <div class="notice">
+                        Submitting an application does not automatically
+                        activate an institute workspace or grant administrator
+                        permissions. Foundev must review and approve the
+                        partnership first.
+                    </div>
+                </section>
+
+                <div
+                    class="form-message"
+                    id="form-message"
+                    role="status"
+                    aria-live="polite"
+                ></div>
+
+                <div class="form-actions">
+                    <button
+                        type="button"
+                        class="button button-secondary"
+                        id="previous-button"
+                        hidden
+                    >
+                        <span aria-hidden="true">←</span> Back
+                    </button>
+
+                    <button
+                        type="button"
+                        class="button button-primary"
+                        id="next-button"
+                    >
+                        Continue <span aria-hidden="true">→</span>
+                    </button>
+
+                    <button
+                        type="submit"
+                        class="button button-primary"
+                        id="submit-button"
+                        hidden
+                    >
+                        Submit application <span aria-hidden="true">↗</span>
+                    </button>
+                </div>
+            </form>
+
+            <p class="security-note">
+                <span aria-hidden="true">◈</span>
+                Learn. Build. Launch. — Foundev
+            </p>
+        </section>
+
+        <!-- PARTNERSHIP PROCESS -->
+        <section class="partnership-process" aria-labelledby="process-title">
+            <span class="eyebrow">WHAT HAPPENS NEXT</span>
+            <h2 id="process-title">A clear path to partnership.</h2>
+
+            <div class="process-grid">
+                <article class="process-item">
+                    <span class="process-number">01</span>
+                    <h3>Apply</h3>
+                    <p>
+                        Share your institution's details and representative
+                        contact information.
+                    </p>
+                </article>
+
+                <article class="process-item">
+                    <span class="process-number">02</span>
+                    <h3>Verification</h3>
+                    <p>
+                        Verify your contact email and provide any additional
+                        information requested.
+                    </p>
+                </article>
+
+                <article class="process-item">
+                    <span class="process-number">03</span>
+                    <h3>Review</h3>
+                    <p>
+                        Foundev reviews your application before making an
+                        approval decision.
+                    </p>
+                </article>
+
+                <article class="process-item">
+                    <span class="process-number">04</span>
+                    <h3>Get started</h3>
+                    <p>
+                        Once approved, configure your institute workspace,
+                        mentors, students and projects.
+                    </p>
+                </article>
+            </div>
+        </section>
+    </main>
+
+    <!-- FOOTER -->
+    <footer class="site-footer">
+        <div class="footer-main">
+            <div class="footer-brand">
+                <a href="../index.html" class="brand" aria-label="Foundev home">
+                    <img
+                        src="../assets/images/foundev-logo.png"
+                        alt="Foundev"
+                        class="brand-logo"
+                    >
+                </a>
+
+                <p>
+                    A home for student builders.
+                    Learn by building. Create with purpose.
+                </p>
+
+                <span class="footer-tagline">LEARN. BUILD. LAUNCH.</span>
+            </div>
+
+            <nav class="footer-column" aria-label="Explore">
+                <h3>EXPLORE</h3>
+                <a href="../index.html#projects">Projects</a>
+                <a href="../index.html#journey">How it works</a>
+                <a href="../index.html#about">About Foundev</a>
+            </nav>
+
+            <nav class="footer-column" aria-label="Account">
+                <h3>YOUR ACCOUNT</h3>
+                <a href="signup.html">Create an account</a>
+                <a href="login.html">Log in</a>
+            </nav>
+
+            <nav class="footer-column" aria-label="Partnerships">
+                <h3>PARTNER WITH US</h3>
+                <a href="../index.html#colleges">For colleges</a>
+                <a href="contact.html">Contact</a>
+            </nav>
+        </div>
+
+        <div class="footer-bottom">
+            <p>
+                © <span id="current-year">2026</span> Foundev.
+                All rights reserved.
+            </p>
+            <a href="../index.html">Back to Foundev ↑</a>
+        </div>
+    </footer>
+
+    <script>
+        const yearElement = document.getElementById("current-year");
+
+        if (yearElement) {
+            yearElement.textContent = new Date().getFullYear();
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,511 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#1F150C">
+
+  <title>Start Building | Foundev</title>
+
+  <link rel="stylesheet" href="../css/styles.css">
+  <link rel="stylesheet" href="../css/start-building.css">
+
+  <script src="../js/start-building.js" defer></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <a class="brand" href="../index.html">
+      foundev<span>.</span>
+    </a>
+    <span class="topbar-label">YOUR BUILD WORKSPACE</span>
+  </header>
+
+  <main class="container">
+
+    <!-- Progress -->
+    <div class="progress">
+      <div class="progress-info">
+        <span id="stepLabel">STEP 01 OF 05</span>
+        <span id="stepPercent">20%</span>
+      </div>
+
+      <div
+        class="progress-track"
+        role="progressbar"
+        aria-label="Project setup progress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+        aria-valuenow="20"
+        id="progressTrack"
+      >
+        <div id="progressBar" style="width: 20%"></div>
+      </div>
+    </div>
+
+    <!-- SCREEN 1: Choose a starting method -->
+    <section class="screen" data-screen="1">
+      <p class="eyebrow">START WITH WHAT YOU HAVE</p>
+
+      <h1>
+        Every project<br>
+        <span>starts somewhere.</span>
+      </h1>
+
+      <p class="lead">
+        Bring an idea, a project brief, or code you've already started.
+        Foundev will help you figure out the next step.
+      </p>
+
+      <form id="sourceForm">
+        <p class="field-label">How would you like to begin?</p>
+
+        <div class="choice-grid">
+
+          <label class="choice">
+            <input
+              type="radio"
+              name="sourceMethod"
+              value="idea"
+              checked
+            >
+            <span class="choice-number">01 / NEW PROJECT</span>
+            <strong>I have an idea</strong>
+            <span>
+              Describe what you want to build, even if you are a beginner.
+            </span>
+          </label>
+
+          <label class="choice">
+            <input
+              type="radio"
+              name="sourceMethod"
+              value="readme"
+            >
+            <span class="choice-number">02 / PROJECT BRIEF</span>
+            <strong>I have a README.md</strong>
+            <span>
+              Start from an existing project description or requirements.
+            </span>
+          </label>
+
+          <label class="choice">
+            <input
+              type="radio"
+              name="sourceMethod"
+              value="code"
+            >
+            <span class="choice-number">03 / EXISTING CODE</span>
+            <strong>I have source code</strong>
+            <span>
+              Bring an existing project ZIP to understand or improve it.
+            </span>
+          </label>
+
+        </div>
+
+        <div class="actions">
+          <span class="muted">No coding experience required.</span>
+          <button class="button primary" type="submit">
+            Continue →
+          </button>
+        </div>
+      </form>
+    </section>
+
+    <!-- SCREEN 2: Collect project input -->
+    <section class="screen" data-screen="2" hidden>
+      <p class="eyebrow">TELL US ABOUT YOUR PROJECT</p>
+
+      <h1>
+        Let's understand<br>
+        <span>what you're building.</span>
+      </h1>
+
+      <p class="lead" id="inputIntro">
+        Start with a simple description. Technical terms are not required.
+      </p>
+
+      <form id="projectForm">
+
+        <!-- Idea input -->
+        <div id="ideaPanel">
+          <label class="field-label" for="projectIdea">
+            What would you like to build?
+          </label>
+
+          <textarea
+            id="projectIdea"
+            maxlength="5000"
+            rows="6"
+            placeholder="I want to build a platform that helps students find teammates for college projects..."
+          ></textarea>
+
+          <div class="field-footer">
+            <span>Describe the problem or outcome you want.</span>
+            <span id="ideaCount">0 / 5000</span>
+          </div>
+        </div>
+
+        <!-- README input -->
+        <div id="readmePanel" hidden>
+          <label class="field-label" for="readmeFile">
+            Upload your README
+          </label>
+
+          <input
+            id="readmeFile"
+            type="file"
+            accept=".md,.markdown,.txt,text/plain,text/markdown"
+          >
+
+          <p class="hint">
+            Maximum 2 MB. Choose a README or plain-text project brief.
+          </p>
+
+          <p id="readmeName" class="file-name">
+            No file selected
+          </p>
+
+          <label class="field-label" for="readmeContext">
+            Additional context (optional)
+          </label>
+
+          <textarea
+            id="readmeContext"
+            maxlength="1500"
+            rows="3"
+            placeholder="Tell us about your deadline or requirements."
+          ></textarea>
+        </div>
+
+        <!-- ZIP input -->
+        <div id="codePanel" hidden>
+          <label class="field-label" for="codeFile">
+            Upload existing project
+          </label>
+
+          <input
+            id="codeFile"
+            type="file"
+            accept=".zip,application/zip"
+          >
+
+          <p class="hint">
+            ZIP only, maximum 25 MB. Secure server-side ZIP analysis
+            will be implemented separately.
+          </p>
+
+          <p id="codeName" class="file-name">
+            No file selected
+          </p>
+
+          <label class="field-label" for="existingGoal">
+            What do you want to do with this code?
+          </label>
+
+          <select id="existingGoal">
+            <option value="Understand the code">Understand the code</option>
+            <option value="Fix bugs">Fix bugs</option>
+            <option value="Add features">Add features</option>
+            <option value="Complete the project">Complete the project</option>
+            <option value="Prepare for submission">Prepare for submission</option>
+            <option value="Improve and launch">Improve and launch</option>
+          </select>
+
+          <p class="hint">
+            Never upload secrets, passwords, private keys, or real user data.
+          </p>
+        </div>
+
+        <!-- Student's initial project type preference -->
+        <div class="field-block">
+          <label class="field-label" for="projectType">
+            What kind of project do you think it is?
+          </label>
+
+          <select id="projectType">
+            <option value="Not sure yet">
+              Not sure yet — help me decide
+            </option>
+            <option value="Website / Web app">Website / Web app</option>
+            <option value="Mobile app">Mobile app</option>
+            <option value="AI / Machine learning">AI / Machine learning</option>
+            <option value="Data Science">Data Science</option>
+            <option value="IoT / Embedded systems">IoT / Embedded systems</option>
+            <option value="Other">Other</option>
+          </select>
+
+          <p class="hint">
+            Foundev AI will suggest a project classification after analysis.
+          </p>
+        </div>
+
+        <p id="formError" class="error" role="alert" hidden></p>
+
+        <div class="actions split">
+          <button
+            class="button secondary"
+            type="button"
+            data-back="1"
+          >
+            ← Back
+          </button>
+
+          <button class="button primary" type="submit">
+            Analyze my project →
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- SCREEN 3: AI-generated project overview -->
+    <section class="screen" data-screen="3" hidden>
+      <p class="eyebrow">YOUR IDEA, UNDERSTOOD</p>
+
+      <h1>
+        Here's what we're<br>
+        <span>going to build.</span>
+      </h1>
+
+      <p class="lead">
+        Foundev has analyzed your submission. Review the suggested
+        project details before planning your build.
+      </p>
+
+      <!-- Loading state -->
+      <div id="aiLoading" hidden aria-live="polite">
+        <p><strong>Understanding your project...</strong></p>
+        <p class="muted">
+          Identifying the domain, features, technologies, and learning path.
+        </p>
+      </div>
+
+      <!-- Error state -->
+      <p id="aiError" class="error" role="alert" hidden></p>
+
+      <!-- AI result -->
+      <div id="aiOverview" hidden>
+        <div class="review">
+
+          <article class="review-item">
+            <h2 id="aiProjectTitle">Project title</h2>
+            <p id="aiProjectDescription"></p>
+          </article>
+
+          <article class="review-item">
+            <h2>Project classification</h2>
+
+            <p>
+              <strong>Domain:</strong>
+              <span id="aiDomain"></span>
+            </p>
+
+            <p>
+              <strong>Project type:</strong>
+              <span id="aiType"></span>
+            </p>
+
+            <p>
+              <strong>Complexity:</strong>
+              <span id="aiComplexity"></span>
+            </p>
+          </article>
+
+          <article class="review-item">
+            <h2>Problem statement</h2>
+            <p id="aiProblem"></p>
+          </article>
+
+          <article class="review-item">
+            <h2>Who will use this project?</h2>
+            <ul id="aiUsers"></ul>
+          </article>
+
+          <article class="review-item">
+            <h2>Core features</h2>
+            <ul id="aiFeatures"></ul>
+          </article>
+
+          <article class="review-item">
+            <h2>Suggested technology stack</h2>
+            <ul id="aiTechnologies"></ul>
+          </article>
+
+          <article class="review-item">
+            <h2>Your learning roadmap</h2>
+            <ol id="aiRoadmap"></ol>
+          </article>
+
+          <article class="review-item" id="aiAssumptionsPanel">
+            <h2>Assumptions to review</h2>
+            <ul id="aiAssumptions"></ul>
+          </article>
+
+        </div>
+
+        <p class="hint">
+          These are AI-generated recommendations. Review them before continuing.
+        </p>
+      </div>
+
+      <div class="actions split">
+        <button
+          class="button secondary"
+          type="button"
+          data-back="2"
+        >
+          ← Edit submission
+        </button>
+
+        <button
+          class="button primary"
+          id="confirmAI"
+          type="button"
+          disabled
+        >
+          Confirm &amp; personalize →
+        </button>
+      </div>
+    </section>
+
+    <!-- SCREEN 4: Personalize the build -->
+    <section class="screen" data-screen="4" hidden>
+      <p class="eyebrow">PERSONALIZE YOUR BUILD</p>
+
+      <h1>
+        Let's plan a build<br>
+        <span>that works for you.</span>
+      </h1>
+
+      <p class="lead">
+        Tell Foundev about your experience, your timeline, and how you
+        want to develop this project.
+      </p>
+
+      <form id="setupForm">
+
+        <label class="field-label" for="skillLevel">
+          Your coding experience
+        </label>
+
+        <select id="skillLevel">
+          <option value="Beginner">Beginner — explain everything</option>
+          <option value="Some experience">Some experience</option>
+          <option value="Experienced">Experienced developer</option>
+        </select>
+
+        <label class="field-label" for="deadline">
+          Target deadline
+        </label>
+
+        <input id="deadline" type="date" required>
+
+        <label class="field-label" for="teamSize">
+          Who is building?
+        </label>
+
+        <select id="teamSize">
+          <option value="Just me">Just me</option>
+          <option value="A team of 2">A team of 2</option>
+          <option value="A team of 3–4">A team of 3–4</option>
+          <option value="A team of 5 or more">A team of 5 or more</option>
+        </select>
+
+        <label class="field-label" for="environment">
+          Preferred development environment
+        </label>
+
+        <select id="environment">
+          <option value="Help me choose">Help me choose</option>
+          <option value="Browser-based workspace">
+            Browser-based workspace
+          </option>
+          <option value="My computer">My computer / local IDE</option>
+        </select>
+
+        <label class="field-label" for="purpose">
+          Project purpose
+        </label>
+
+        <select id="purpose">
+          <option value="College mini project">College mini project</option>
+          <option value="College major project">College major project</option>
+          <option value="Portfolio project">Portfolio project</option>
+          <option value="Real-world product">
+            Real-world product / startup
+          </option>
+          <option value="Learning">Learning and practice</option>
+        </select>
+
+        <p id="setupError" class="error" role="alert" hidden></p>
+
+        <div class="actions split">
+          <button
+            class="button secondary"
+            type="button"
+            data-back="3"
+          >
+            ← Back to overview
+          </button>
+
+          <button class="button primary" type="submit">
+            Review project →
+          </button>
+        </div>
+
+      </form>
+    </section>
+
+    <!-- SCREEN 5: Final review -->
+    <section class="screen" data-screen="5" hidden>
+      <p class="eyebrow">REVIEW BEFORE WE BEGIN</p>
+
+      <h1>
+        Your project.<br>
+        <span>Your next step.</span>
+      </h1>
+
+      <p class="lead">
+        Review your AI-generated project overview and personalized
+        development plan.
+      </p>
+
+      <div id="projectReview" class="review"></div>
+
+      <div class="notice">
+        <strong>Before you continue</strong>
+        <p>
+          Your project details are currently shown as a preview.
+          Database saving and the next-stage build workflow have not
+          been connected yet.
+        </p>
+      </div>
+
+      <p id="saveStatus" class="hint" role="status"></p>
+
+      <div class="actions split">
+        <button
+          class="button secondary"
+          type="button"
+          data-back="4"
+        >
+          ← Edit details
+        </button>
+
+        <button
+          class="button primary"
+          id="saveDraft"
+          type="button"
+          disabled
+        >
+          Project saving coming next
+        </button>
+      </div>
+    </section>
+
+  </main>
+</body>
+</html>

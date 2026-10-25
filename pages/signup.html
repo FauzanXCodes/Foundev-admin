@@ -1,0 +1,153 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EE">
+
+    <title>Create your Foundev account</title>
+    <meta name="description" content="Join Foundev. Learn by building real projects.">
+
+    <link rel="stylesheet" href="../css/auth.css">
+    <script src="../js/auth.js" defer></script>
+</head>
+<body class="auth-page">
+
+    <header class="auth-header">
+        <a href="../index.html" class="auth-brand" aria-label="Foundev home">
+            <img src="../assets/images/foundev-logo.png" alt="Foundev">
+        </a>
+        <p>Already a member? <a href="login.html">Log in</a></p>
+    </header>
+
+    <main class="auth-layout">
+
+        <section class="auth-story">
+            <span class="auth-eyebrow">YOUR NEXT CHAPTER STARTS HERE</span>
+
+            <h1>
+                You've got an idea.
+                <span>Let's make it real.</span>
+            </h1>
+
+            <p class="auth-story-copy">
+                Learn new skills, build real projects, and turn what
+                you know into something you can show the world.
+            </p>
+
+            <div class="auth-manifesto">
+                <span>01 — LEARN</span>
+                <span>02 — BUILD</span>
+                <span>03 — LAUNCH</span>
+            </div>
+
+            <div class="auth-story-bottom">
+                <span class="auth-star" aria-hidden="true">✳</span>
+                <p>Made for curious minds and future builders.</p>
+            </div>
+        </section>
+
+        <section class="auth-card" aria-labelledby="signup-title">
+
+            <div class="auth-card-heading">
+                <span class="auth-eyebrow">CREATE YOUR ACCOUNT</span>
+                <h2 id="signup-title">Join Foundev.</h2>
+                <p>Choose how you'd like to get started.</p>
+            </div>
+
+            <div class="social-auth">
+                <a class="social-button" href="../backend/auth/google-login.php">
+                    <svg viewBox="0 0 48 48" aria-hidden="true">
+                        <path fill="#EA4335" d="M24 9.5c3.54 0 6.71 1.22 9.21 3.6l6.85-6.85C35.9 2.38 30.47 0 24 0 14.62 0 6.51 5.38 2.56 13.22l7.98 6.19C12.43 13.72 17.74 9.5 24 9.5Z" transform="translate(0 5)"/>
+                        <path fill="#4285F4" d="M46.98 24.55c0-1.57-.15-3.09-.38-4.55H24v9.02h12.94c-.58 2.96-2.26 5.48-4.74 7.18l7.72 5.99c4.51-4.16 7.06-10.29 7.06-17.64Z" transform="translate(0 0)"/>
+                        <path fill="#FBBC05" d="M10.53 28.59a14.4 14.4 0 0 1 0-9.18l-7.98-6.19a23.9 23.9 0 0 0 0 21.56l7.98-6.19Z" transform="translate(0 5)"/>
+                        <path fill="#34A853" d="M24 48c6.47 0 11.92-2.13 15.9-5.81l-7.72-5.99c-2.14 1.44-4.88 2.3-8.18 2.3-6.26 0-11.57-4.22-13.46-9.91l-7.98 6.19C6.51 42.62 14.62 48 24 48Z" transform="translate(0 0)"/>
+                    </svg>
+                    <span>Continue with Google</span>
+                    <span class="social-arrow" aria-hidden="true">↗</span>
+                </a>
+
+                <a class="social-button" href="../backend/auth/github-login.php">
+                    <svg viewBox="0 0 24 24" aria-hidden="true" class="github-icon">
+                        <path fill="currentColor" d="M12 .9a11.1 11.1 0 0 0-3.51 21.63c.55.1.76-.24.76-.53v-2.06c-3.1.67-3.75-1.32-3.75-1.32-.5-1.28-1.24-1.62-1.24-1.62-1.02-.7.08-.69.08-.69 1.13.08 1.73 1.16 1.73 1.16 1 .1.77 2.07 3.28 1.45.1-.73.39-1.22.71-1.5-2.48-.28-5.08-1.24-5.08-5.52 0-1.22.44-2.22 1.16-3-.12-.28-.5-1.42.11-2.96 0 0 .95-.3 3.05 1.15a10.6 10.6 0 0 1 5.55 0c2.1-1.45 3.04-1.15 3.04-1.15.61 1.54.23 2.68.12 2.96.72.78 1.15 1.78 1.15 3 0 4.29-2.6 5.23-5.09 5.51.4.35.76 1.03.76 2.08V22c0 .29.2.63.77.52A11.1 11.1 0 0 0 12 .9Z"/>
+                    </svg>
+                    <span>Continue with GitHub</span>
+                    <span class="social-arrow" aria-hidden="true">↗</span>
+                </a>
+            </div>
+
+            <div class="auth-divider">
+                <span></span>
+                <p>OR USE YOUR EMAIL</p>
+                <span></span>
+            </div>
+
+            <button type="button" class="email-toggle" id="email-toggle"
+                    aria-expanded="true" aria-controls="email-signup-form">
+                Sign up with email
+                <span aria-hidden="true">−</span>
+            </button>
+
+            <form id="email-signup-form" class="auth-form"
+                  action="../backend/auth/signup.php" method="post">
+
+                <div class="form-field">
+                    <label for="full-name">Full name</label>
+                    <input id="full-name" name="full_name" type="text"
+                           placeholder="Your name" autocomplete="name"
+                           maxlength="100" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="signup-email">Email address</label>
+                    <input id="signup-email" name="email" type="email"
+                           placeholder="you@example.com" autocomplete="email"
+                           maxlength="254" required>
+                </div>
+
+                <div class="form-field">
+                    <label for="signup-password">Password</label>
+                    <div class="password-wrap">
+                        <input id="signup-password" name="password"
+                               type="password" placeholder="At least 8 characters"
+                               autocomplete="new-password"
+                               minlength="8" maxlength="128" required>
+                        <button type="button" class="password-toggle"
+                                data-password-toggle="signup-password"
+                                aria-label="Show password">Show</button>
+                    </div>
+                    <p class="field-hint">Use at least 8 characters.</p>
+                </div>
+
+                <label class="auth-consent">
+                    <input type="checkbox" name="terms" value="1" required>
+                    <span>
+                        I agree to the
+                        <a href="terms.html">Terms of Service</a>
+                        and <a href="privacy.html">Privacy Policy</a>.
+                    </span>
+                </label>
+
+                <button type="submit" class="auth-submit">
+                    Create account <span aria-hidden="true">↗</span>
+                </button>
+
+                <p class="form-message" id="signup-message"
+                   role="status" aria-live="polite"></p>
+            </form>
+
+            <p class="auth-legal">
+                By continuing, you agree to use Foundev responsibly.
+            </p>
+        </section>
+
+    </main>
+
+    <footer class="auth-footer">
+        <span>© <span data-current-year>2026</span> Foundev</span>
+        <span>Learn. Build. Launch.</span>
+    </footer>
+
+</body>
+</html>
