@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EE">
+    <title>AI Analytics — Foundev Super Admin</title>
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="../js/admin-layout.js" defer></script>
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="admin-sidebar">
+            <div class="admin-sidebar-header"><a href="dashboard.html" class="admin-sidebar-brand"><img src="../assets/images/foundev-logo.png" alt="Foundev"></a></div>
+            <nav class="admin-sidebar-nav">
+                <div class="admin-nav-group">
+                    <a class="admin-nav-link" href="dashboard.html">Overview</a>
+                    <a class="admin-nav-link" href="institute-applications.html">Institute Applications</a>
+                    <a class="admin-nav-link" href="institutions.html">Institutions</a>
+                    <a class="admin-nav-link" href="students.html">Students</a>
+                    <a class="admin-nav-link" href="mentors.html">Mentors</a>
+                    <a class="admin-nav-link" href="projects.html">Projects</a>
+                </div>
+                <div class="admin-nav-group">
+                    <a class="admin-nav-link active" href="analytics.html">AI Analytics</a>
+                    <a class="admin-nav-link" href="audit-logs.html">Audit Logs</a>
+                    <a class="admin-nav-link" href="settings.html">Settings</a>
+                </div>
+            </nav>
+            <div class="admin-sidebar-footer"><button type="button" class="admin-logout-btn" id="admin-logout-btn">Sign out</button></div>
+        </aside>
+        <div class="admin-main-area">
+            <header class="admin-topbar">
+                <div class="admin-topbar-left">
+                    <button type="button" class="admin-sidebar-toggle" id="admin-sidebar-toggle"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.25 9H15.75M2.25 4.5H15.75M2.25 13.5H15.75" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    <div class="admin-topbar-meta">
+                        <h1 class="admin-page-title">AI Analytics</h1>
+                        <nav class="admin-breadcrumbs"><a href="dashboard.html">Super Admin</a><span>/</span><span>AI Analytics</span></nav>
+                    </div>
+                </div>
+                <div class="admin-topbar-right">
+                    <span class="admin-preview-badge">Development preview</span>
+                    <div class="admin-user"><div class="admin-user-avatar">A</div><div class="admin-user-meta"><span class="admin-user-name">Administrator</span><span class="admin-user-role">Super Admin</span></div></div>
+                </div>
+            </header>
+            <main class="admin-content">
+                <div class="admin-summary-grid">
+                    <article class="admin-card admin-stat-card"><header class="admin-stat-header"><div><p class="admin-stat-label">AI Analyses</p><div class="admin-stat-value">—</div><p class="admin-stat-meta"><span class="admin-preview-badge">Not yet connected</span></p></div></header></article>
+                    <article class="admin-card admin-stat-card"><header class="admin-stat-header"><div><p class="admin-stat-label">Projects Analyzed</p><div class="admin-stat-value">—</div><p class="admin-stat-meta"><span class="admin-preview-badge">Not yet connected</span></p></div></header></article>
+                    <article class="admin-card admin-stat-card"><header class="admin-stat-header"><div><p class="admin-stat-label">Avg. Score</p><div class="admin-stat-value">—</div><p class="admin-stat-meta"><span class="admin-preview-badge">Not yet connected</span></p></div></header></article>
+                </div>
+                <section class="admin-card">
+                    <header class="admin-card-header"><div class="admin-card-header-group"><h2 class="admin-card-title">Activity</h2><p class="admin-card-subtitle">Charts and detailed metrics will appear when backend provides data.</p></div></header>
+                    <div class="admin-empty-state"><p class="admin-empty-state-title">No analytics data</p><p class="admin-empty-state-subtitle">Backend integration pending.</p></div>
+                </section>
+            </main>
+        </div>
+    </div>
+    <div id="admin-sidebar-backdrop" style="display:none; position:fixed; inset:0; background:rgba(31,21,12,0.4); z-index:9;"></div>
+    <div id="admin-toast-container" class="admin-toast-container"></div>
+</body>
+</html>

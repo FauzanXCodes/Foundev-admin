@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EE">
+    <title>Settings — Foundev Super Admin</title>
+    
+    <link rel="stylesheet" href="../css/admin.css">
+    <script src="../js/admin-layout.js" defer></script>
+</head>
+<body>
+    <div class="admin-layout">
+        <aside class="admin-sidebar" id="admin-sidebar">
+            <div class="admin-sidebar-header"><a href="dashboard.html" class="admin-sidebar-brand"><img src="../assets/images/foundev-logo.png" alt="Foundev"></a></div>
+            <nav class="admin-sidebar-nav">
+                <div class="admin-nav-group">
+                    <a class="admin-nav-link" href="dashboard.html">Overview</a>
+                    <a class="admin-nav-link" href="institute-applications.html">Institute Applications</a>
+                    <a class="admin-nav-link" href="institutions.html">Institutions</a>
+                    <a class="admin-nav-link" href="students.html">Students</a>
+                    <a class="admin-nav-link" href="mentors.html">Mentors</a>
+                    <a class="admin-nav-link" href="projects.html">Projects</a>
+                </div>
+                <div class="admin-nav-group">
+                    <a class="admin-nav-link" href="analytics.html">AI Analytics</a>
+                    <a class="admin-nav-link" href="audit-logs.html">Audit Logs</a>
+                    <a class="admin-nav-link active" href="settings.html">Settings</a>
+                </div>
+            </nav>
+            <div class="admin-sidebar-footer"><button type="button" class="admin-logout-btn" id="admin-logout-btn">Sign out</button></div>
+        </aside>
+        <div class="admin-main-area">
+            <header class="admin-topbar">
+                <div class="admin-topbar-left">
+                    <button type="button" class="admin-sidebar-toggle" id="admin-sidebar-toggle"><svg width="18" height="18" viewBox="0 0 18 18" fill="none"><path d="M2.25 9H15.75M2.25 4.5H15.75M2.25 13.5H15.75" stroke="currentColor" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round"/></svg></button>
+                    <div class="admin-topbar-meta">
+                        <h1 class="admin-page-title">Settings</h1>
+                        <nav class="admin-breadcrumbs"><a href="dashboard.html">Super Admin</a><span>/</span><span>Settings</span></nav>
+                    </div>
+                </div>
+                <div class="admin-topbar-right">
+                    <span class="admin-preview-badge">Development preview</span>
+                    <div class="admin-user"><div class="admin-user-avatar">A</div><div class="admin-user-meta"><span class="admin-user-name">Administrator</span><span class="admin-user-role">Super Admin</span></div></div>
+                </div>
+            </header>
+            <main class="admin-content">
+                <section class="admin-detail-grid">
+                    <article class="admin-detail-card">
+                        <div class="admin-detail-section">
+                            <h2 class="admin-card-title">Administrator profile</h2>
+                            <p class="admin-card-subtitle">Profile presentation. No editable fields connected to backend.</p>
+                            <div class="admin-detail-grid-content">
+                                <div class="admin-detail-item"><span class="admin-detail-label">Full name</span><span class="admin-detail-value">—</span></div>
+                                <div class="admin-detail-item"><span class="admin-detail-label">Email address</span><span class="admin-detail-value">—</span></div>
+                                <div class="admin-detail-item"><span class="admin-detail-label">Account status</span><span class="admin-detail-value">—</span></div>
+                                <div class="admin-detail-item"><span class="admin-detail-label">Last login</span><span class="admin-detail-value">—</span></div>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="admin-detail-card">
+                        <div class="admin-detail-section">
+                            <h2 class="admin-card-title">Interface preferences</h2>
+                            <p class="admin-card-subtitle">Local UI preferences only. Stored in memory or not persisted.</p>
+                            <div class="admin-form">
+                                <div class="admin-form-field">
+                                    <label for="pref-theme">Theme</label>
+                                    <select id="pref-theme" disabled>
+                                        <option value="light">Light</option>
+                                        <option value="dark">Dark (not implemented)</option>
+                                    </select>
+                                </div>
+                            </div>
+                        </div>
+                    </article>
+                </section>
+            </main>
+        </div>
+    </div>
+    <div id="admin-sidebar-backdrop" style="display:none; position:fixed; inset:0; background:rgba(31,21,12,0.4); z-index:9;"></div>
+    <div id="admin-toast-container" class="admin-toast-container"></div>
+</body>
+</html>

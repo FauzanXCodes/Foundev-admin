@@ -1,0 +1,320 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EE">
+    <meta name="description" content="Manage students registered on Foundev.">
+
+    <title>Students — Foundev Super Admin</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-sidebar.css">
+
+    <script src="js/admin-layout.js" defer></script>
+    <script src="js/admin-management.js" defer></script>
+</head>
+
+<body class="admin-page">
+
+<div class="admin-layout">
+
+    <!-- SHARED ADMIN SIDEBAR -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+
+        <div class="admin-sidebar-header">
+            <a href="dashboard.html"
+               class="admin-sidebar-brand"
+               aria-label="Foundev Admin Dashboard">
+                <img src="../assets/images/foundev-logo.png" alt="Foundev">
+            </a>
+
+            <span class="admin-sidebar-label">ADMIN CONSOLE</span>
+        </div>
+
+        <nav class="admin-sidebar-nav" aria-label="Admin navigation">
+
+            <div class="admin-nav-section">
+                <span class="admin-nav-heading">WORKSPACE</span>
+
+                <a class="admin-nav-link" href="dashboard.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Overview</span>
+                </a>
+
+                <a class="admin-nav-link" href="institute-applications.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3 21 8 12 13 3 8 12 3Z"/>
+                            <path d="M5 11V17L12 21L19 17V11"/>
+                            <path d="M12 13V21"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Institute Applications</span>
+                    <span class="admin-nav-badge" id="admin-pending-badge" hidden>0</span>
+                </a>
+
+                <a class="admin-nav-link" href="institutions.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 21H21M5 21V8L12 4L19 8V21"/>
+                            <path d="M9 11H9.01M15 11H15.01"/>
+                            <path d="M9 15H9.01M15 15H15.01"/>
+                            <path d="M10 21V18H14V21"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Institutions</span>
+                </a>
+
+                <a class="admin-nav-link active"
+                   href="students.html"
+                   aria-current="page">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="9" cy="8" r="4"/>
+                            <path d="M2 21V19C2 15.7 4.7 13 8 13H10C13.3 13 16 15.7 16 19V21"/>
+                            <path d="M16 4.5A4 4 0 0 1 16 12"/>
+                            <path d="M18 14C20.2 14.8 22 17 22 20V21"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Students</span>
+                </a>
+
+                <a class="admin-nav-link" href="mentors.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4"/>
+                            <path d="M4 21V19C4 15.7 6.7 13 10 13H14C17.3 13 20 15.7 20 19V21"/>
+                            <path d="M9 18H15"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Mentors</span>
+                </a>
+
+                <a class="admin-nav-link" href="projects.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="3"/>
+                            <path d="M3 9H21M9 9V21M15 9V21"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Projects</span>
+                </a>
+            </div>
+
+            <div class="admin-nav-section">
+                <span class="admin-nav-heading">INSIGHTS &amp; CONTROL</span>
+
+                <a class="admin-nav-link" href="analytics.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 3V21H21"/>
+                            <path d="M7 15L11 11L14 14L21 6"/>
+                            <path d="M16 6H21V11"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">AI Analytics</span>
+                </a>
+
+                <a class="admin-nav-link" href="audit-logs.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="4" y="3" width="16" height="18" rx="2"/>
+                            <path d="M8 8H16M8 12H16M8 16H13"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Audit Logs</span>
+                </a>
+
+                <a class="admin-nav-link" href="settings.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 2V5M12 19V22M2 12H5M19 12H22"/>
+                            <path d="M5 5L7 7M17 17L19 19M19 5L17 7M7 17L5 19"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Settings</span>
+                </a>
+            </div>
+
+        </nav>
+
+        <div class="admin-sidebar-bottom">
+
+            <div class="admin-sidebar-help">
+                <span class="admin-help-dot"></span>
+                <div>
+                    <strong>Admin workspace</strong>
+                    <small>Foundev platform control</small>
+                </div>
+            </div>
+
+            <button type="button"
+                    class="admin-logout-btn"
+                    id="admin-logout-btn">
+                <svg viewBox="0 0 24 24" aria-hidden="true">
+                    <path d="M10 17L15 12L10 7"/>
+                    <path d="M15 12H3"/>
+                    <path d="M12 3H19C20.1 3 21 3.9 21 5V19C21 20.1 20.1 21 19 21H12"/>
+                </svg>
+                <span>Sign out</span>
+            </button>
+
+            <div class="admin-sidebar-version">FOUNDEV ADMIN · V1.0</div>
+
+        </div>
+    </aside>
+
+    <!-- MOBILE SIDEBAR BACKDROP -->
+    <div class="admin-sidebar-backdrop" id="admin-sidebar-backdrop"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="admin-main-area">
+
+        <header class="admin-topbar">
+
+            <div class="admin-topbar-left">
+
+                <button type="button"
+                        class="admin-sidebar-toggle"
+                        id="admin-sidebar-toggle"
+                        aria-label="Open navigation"
+                        aria-controls="admin-sidebar"
+                        aria-expanded="false">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 6H20M4 12H20M4 18H20"/>
+                    </svg>
+                </button>
+
+                <div class="admin-topbar-meta">
+                    <h1 class="admin-page-title">Students</h1>
+
+                    <nav class="admin-breadcrumbs" aria-label="Breadcrumb">
+                        <a href="dashboard.html">Super Admin</a>
+                        <span aria-hidden="true">/</span>
+                        <span>Students</span>
+                    </nav>
+                </div>
+
+            </div>
+
+            <div class="admin-topbar-right">
+                <span class="admin-preview-badge">Development preview</span>
+
+                <div class="admin-user">
+                    <div class="admin-user-avatar">A</div>
+                    <div class="admin-user-meta">
+                        <span class="admin-user-name">Administrator</span>
+                        <span class="admin-user-role">Super Admin</span>
+                    </div>
+                </div>
+            </div>
+
+        </header>
+
+        <!-- STUDENT MANAGEMENT -->
+        <main class="admin-content">
+
+            <section class="admin-toolbar">
+
+                <div class="admin-toolbar-group">
+
+                    <div class="admin-toolbar-search">
+                        <svg class="admin-search-icon"
+                             viewBox="0 0 16 16"
+                             fill="none"
+                             aria-hidden="true">
+                            <circle cx="7.333" cy="7.333" r="4.667"
+                                    stroke="currentColor"
+                                    stroke-width="1.2"/>
+                            <path d="M10.333 10.333L14 14"
+                                  stroke="currentColor"
+                                  stroke-width="1.2"
+                                  stroke-linecap="round"/>
+                        </svg>
+
+                        <input id="mgmt-search"
+                               type="search"
+                               placeholder="Search students"
+                               aria-label="Search students">
+                    </div>
+
+                </div>
+
+            </section>
+
+            <section class="admin-card">
+
+                <header class="admin-card-header">
+                    <div class="admin-card-header-group">
+                        <span class="admin-section-kicker">USER MANAGEMENT</span>
+                        <h2 class="admin-card-title">Student listing</h2>
+                        <p class="admin-card-subtitle">
+                            View and manage students registered on Foundev.
+                        </p>
+                    </div>
+                </header>
+
+                <div class="admin-table-wrap">
+
+                    <table class="admin-table" data-mgmt-table>
+
+                        <thead>
+                            <tr>
+                                <th>Student</th>
+                                <th>Email</th>
+                                <th>Institution</th>
+                                <th>Account status</th>
+                                <th>Registered</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody>
+                            <tr>
+                                <td colspan="6">
+                                    <div class="admin-empty-state">
+                                        <p class="admin-empty-state-title">
+                                            No data available
+                                        </p>
+                                        <p class="admin-empty-state-subtitle">
+                                            Student records will appear here
+                                            when backend integration is connected.
+                                        </p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </section>
+
+            <footer class="admin-content-footer">
+                <span>© <span data-current-year>2026</span> Foundev</span>
+                <span>LEARN. BUILD. LAUNCH.</span>
+            </footer>
+
+        </main>
+
+    </div>
+</div>
+
+<!-- TOAST NOTIFICATIONS -->
+<div id="admin-toast-container"
+     class="admin-toast-container"
+     aria-live="polite"></div>
+
+</body>
+</html>

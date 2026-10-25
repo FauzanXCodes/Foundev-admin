@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EE">
+    <meta name="color-scheme" content="light">
+    <meta name="description" content="Secure Foundev Super Admin sign-in portal.">
+    <title>Super Admin Login — Foundev</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="css/admin.css">
+    <script src="../js/admin-auth.js" defer></script>
+</head>
+
+<body class="admin-login-body">
+
+    <header class="admin-login-header">
+        <a href="../index.html" class="admin-login-brand" aria-label="Foundev home">
+            <img src="../assets/images/foundev-logo.png" alt="Foundev" width="150" height="44">
+        </a>
+
+        <div class="admin-header-label">
+            <span class="admin-header-indicator" aria-hidden="true"></span>
+            <span>ADMINISTRATION PORTAL</span>
+        </div>
+    </header>
+
+    <main class="admin-login-main">
+        <div class="admin-login-content">
+
+            <div class="admin-login-intro">
+                <span class="admin-eyebrow">FOUNDEV / INTERNAL ACCESS</span>
+                <h1>Good to have<br>you <span>back.</span></h1>
+                <p>
+                    Your workspace starts here. Sign in with your authorized
+                    administrator credentials to manage the Foundev platform.
+                </p>
+
+                <div class="admin-login-trust">
+                    <span class="admin-trust-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <rect x="5" y="10" width="14" height="11" rx="2"
+                                  stroke="currentColor" stroke-width="1.6"/>
+                            <path d="M8 10V7a4 4 0 0 1 8 0v3"
+                                  stroke="currentColor" stroke-width="1.6"
+                                  stroke-linecap="round"/>
+                            <circle cx="12" cy="15" r="1.2" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span>
+                        <strong>Protected access</strong>
+                        <small>Authorized administrators only</small>
+                    </span>
+                </div>
+            </div>
+
+            <section class="admin-login-card" aria-labelledby="login-heading">
+                <div class="admin-card-top">
+                    <div class="admin-card-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24" fill="none">
+                            <path d="M12 3 20 6v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-3Z"
+                                  stroke="currentColor" stroke-width="1.5"
+                                  stroke-linejoin="round"/>
+                            <path d="m9 12 2 2 4-4"
+                                  stroke="currentColor" stroke-width="1.5"
+                                  stroke-linecap="round" stroke-linejoin="round"/>
+                        </svg>
+                    </div>
+
+                    <span class="admin-card-label">SUPER ADMIN</span>
+                </div>
+
+                <h2 id="login-heading">Welcome back</h2>
+                <p class="admin-login-subtitle">
+                    Enter your credentials to continue to your dashboard.
+                </p>
+
+                <form id="admin-login-form" class="admin-login-form"
+                      method="post" novalidate>
+
+                    <div class="admin-form-field">
+                        <label for="admin-email">Email address</label>
+
+                        <div class="admin-input-wrap">
+                            <svg class="admin-input-icon" viewBox="0 0 24 24"
+                                 fill="none" aria-hidden="true">
+                                <rect x="3" y="5" width="18" height="14" rx="2"
+                                      stroke="currentColor" stroke-width="1.5"/>
+                                <path d="m4 7 8 6 8-6"
+                                      stroke="currentColor" stroke-width="1.5"
+                                      stroke-linecap="round"
+                                      stroke-linejoin="round"/>
+                            </svg>
+
+                            <input
+                                id="admin-email"
+                                name="email"
+                                type="email"
+                                autocomplete="username"
+                                inputmode="email"
+                                placeholder="you@foundev.com"
+                                maxlength="254"
+                                autocapitalize="none"
+                                spellcheck="false"
+                                required
+                                aria-describedby="admin-email-error"
+                            >
+                        </div>
+
+                        <small class="admin-field-error" id="admin-email-error"></small>
+                    </div>
+
+                    <div class="admin-form-field">
+                        <div class="admin-label-row">
+                            <label for="admin-password">Password</label>
+                        </div>
+
+                        <div class="admin-input-wrap">
+                            <svg class="admin-input-icon" viewBox="0 0 24 24"
+                                 fill="none" aria-hidden="true">
+                                <rect x="4" y="10" width="16" height="11" rx="2"
+                                      stroke="currentColor" stroke-width="1.5"/>
+                                <path d="M8 10V7a4 4 0 0 1 8 0v3"
+                                      stroke="currentColor" stroke-width="1.5"
+                                      stroke-linecap="round"/>
+                                <circle cx="12" cy="15" r="1.3"
+                                        fill="currentColor"/>
+                            </svg>
+
+                            <input
+                                id="admin-password"
+                                name="password"
+                                type="password"
+                                autocomplete="current-password"
+                                placeholder="Enter your password"
+                                maxlength="1024"
+                                required
+                                aria-describedby="admin-password-error"
+                            >
+
+                            <button
+                                type="button"
+                                class="admin-password-toggle"
+                                data-password-toggle="admin-password"
+                                aria-label="Show password"
+                                aria-controls="admin-password"
+                                aria-pressed="false"
+                            >Show</button>
+                        </div>
+
+                        <small class="admin-field-error" id="admin-password-error"></small>
+                    </div>
+
+                    <div class="admin-login-options">
+                        <span class="admin-secure-label">
+                            <span aria-hidden="true">●</span>
+                            Secure administrator sign-in
+                        </span>
+                    </div>
+
+                    <button type="submit" class="admin-login-submit" id="admin-login-submit">
+                        <span class="admin-submit-text">Sign in to Foundev</span>
+
+                        <svg class="admin-submit-arrow" viewBox="0 0 24 24"
+                             fill="none" aria-hidden="true">
+                            <path d="M5 12h14m-6-6 6 6-6 6"
+                                  stroke="currentColor" stroke-width="1.7"
+                                  stroke-linecap="round"
+                                  stroke-linejoin="round"/>
+                        </svg>
+                    </button>
+
+                    <p class="admin-login-message" id="admin-login-message"
+                       role="status" aria-live="polite" tabindex="-1"></p>
+                </form>
+
+                <div class="admin-login-card-footer">
+                    <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                        <path d="M12 3 20 6v5c0 5-3.5 8-8 10-4.5-2-8-5-8-10V6l8-3Z"
+                              stroke="currentColor" stroke-width="1.5"
+                              stroke-linejoin="round"/>
+                    </svg>
+                    Your administrator session is protected by Foundev.
+                </div>
+            </section>
+
+        </div>
+    </main>
+
+    <footer class="admin-login-footer">
+        <span>© <span data-current-year>2026</span> Foundev</span>
+        <span>LEARN. BUILD. LAUNCH.</span>
+    </footer>
+
+    <script>
+        (() => {
+            const year = document.querySelector('[data-current-year]');
+
+            if (year) {
+                year.textContent = new Date().getFullYear();
+            }
+        })();
+    </script>
+
+</body>
+</html>

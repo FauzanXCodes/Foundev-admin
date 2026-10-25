@@ -1,0 +1,502 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#F7F4EE">
+    <meta name="description" content="Review and manage institution applications on Foundev.">
+    <title>Institute Applications — Foundev Super Admin</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-sidebar.css">
+
+    <script src="js/admin-layout.js" defer></script>
+    <script src="js/admin-applications.js" defer></script>
+</head>
+
+<body class="admin-page">
+
+<div class="admin-layout">
+
+    <!-- SHARED ADMIN SIDEBAR -->
+    <aside class="admin-sidebar" id="admin-sidebar">
+
+        <div class="admin-sidebar-header">
+            <a href="dashboard.html"
+               class="admin-sidebar-brand"
+               aria-label="Foundev Admin Dashboard">
+                <img src="../assets/images/foundev-logo.png" alt="Foundev">
+            </a>
+            <span class="admin-sidebar-label">ADMIN CONSOLE</span>
+        </div>
+
+        <nav class="admin-sidebar-nav" aria-label="Admin navigation">
+
+            <div class="admin-nav-section">
+                <span class="admin-nav-heading">WORKSPACE</span>
+
+                <a class="admin-nav-link" href="dashboard.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="7" height="7" rx="1.5"/>
+                            <rect x="14" y="3" width="7" height="7" rx="1.5"/>
+                            <rect x="3" y="14" width="7" height="7" rx="1.5"/>
+                            <rect x="14" y="14" width="7" height="7" rx="1.5"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Overview</span>
+                </a>
+
+                <a class="admin-nav-link active"
+                   href="institute-applications.html"
+                   aria-current="page">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M12 3 21 8 12 13 3 8 12 3Z"/>
+                            <path d="M5 11V17L12 21L19 17V11"/>
+                            <path d="M12 13V21"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Institute Applications</span>
+                    <span class="admin-nav-badge"
+                          id="applications-nav-count">0</span>
+                </a>
+
+                <a class="admin-nav-link" href="institutions.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 21H21M5 21V8L12 4L19 8V21"/>
+                            <path d="M9 11H9.01M15 11H15.01"/>
+                            <path d="M9 15H9.01M15 15H15.01"/>
+                            <path d="M10 21V18H14V21"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Institutions</span>
+                </a>
+
+                <a class="admin-nav-link" href="students.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="9" cy="8" r="4"/>
+                            <path d="M2 21V19C2 15.7 4.7 13 8 13H10C13.3 13 16 15.7 16 19V21"/>
+                            <path d="M16 4.5A4 4 0 0 1 16 12"/>
+                            <path d="M18 14C20.2 14.8 22 17 22 20V21"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Students</span>
+                </a>
+
+                <a class="admin-nav-link" href="mentors.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="8" r="4"/>
+                            <path d="M4 21V19C4 15.7 6.7 13 10 13H14C17.3 13 20 15.7 20 19V21"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Mentors</span>
+                </a>
+
+                <a class="admin-nav-link" href="projects.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="3" y="3" width="18" height="18" rx="3"/>
+                            <path d="M3 9H21M9 9V21M15 9V21"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Projects</span>
+                </a>
+            </div>
+
+            <div class="admin-nav-section">
+                <span class="admin-nav-heading">INSIGHTS &amp; CONTROL</span>
+
+                <a class="admin-nav-link" href="analytics.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <path d="M3 3V21H21"/>
+                            <path d="M7 15L11 11L14 14L21 6"/>
+                            <path d="M16 6H21V11"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">AI Analytics</span>
+                </a>
+
+                <a class="admin-nav-link" href="audit-logs.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <rect x="4" y="3" width="16" height="18" rx="2"/>
+                            <path d="M8 8H16M8 12H16M8 16H13"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Audit Logs</span>
+                </a>
+
+                <a class="admin-nav-link" href="settings.html">
+                    <span class="admin-nav-icon" aria-hidden="true">
+                        <svg viewBox="0 0 24 24">
+                            <circle cx="12" cy="12" r="3"/>
+                            <path d="M12 2V5M12 19V22M2 12H5M19 12H22"/>
+                            <path d="M5 5L7 7M17 17L19 19M19 5L17 7M7 17L5 19"/>
+                        </svg>
+                    </span>
+                    <span class="admin-nav-label">Settings</span>
+                </a>
+            </div>
+
+        </nav>
+
+        <div class="admin-sidebar-bottom">
+            <div class="admin-sidebar-help">
+                <span class="admin-help-dot"></span>
+                <div>
+                    <strong>Admin workspace</strong>
+                    <small>Foundev platform control</small>
+                </div>
+            </div>
+
+            <button type="button"
+                    class="admin-logout-btn"
+                    id="admin-logout-btn">
+                Sign out
+            </button>
+
+            <div class="admin-sidebar-version">FOUNDEV ADMIN · V1.0</div>
+        </div>
+
+    </aside>
+
+    <!-- MOBILE SIDEBAR BACKDROP -->
+    <div class="admin-sidebar-backdrop"
+         id="admin-sidebar-backdrop"></div>
+
+    <!-- MAIN CONTENT -->
+    <div class="admin-main-area">
+
+        <header class="admin-topbar">
+
+            <div class="admin-topbar-left">
+
+                <button type="button"
+                        class="admin-sidebar-toggle"
+                        id="admin-sidebar-toggle"
+                        aria-label="Open navigation"
+                        aria-controls="admin-sidebar"
+                        aria-expanded="false">
+                    <svg viewBox="0 0 24 24" aria-hidden="true">
+                        <path d="M4 6H20M4 12H20M4 18H20"/>
+                    </svg>
+                </button>
+
+                <div class="admin-topbar-meta">
+                    <h1 class="admin-page-title">Institute Applications</h1>
+
+                    <nav class="admin-breadcrumbs" aria-label="Breadcrumb">
+                        <a href="dashboard.html">Super Admin</a>
+                        <span aria-hidden="true">/</span>
+                        <span>Institute Applications</span>
+                    </nav>
+                </div>
+
+            </div>
+
+            <div class="admin-topbar-right">
+                <span class="admin-preview-badge">Application management</span>
+            </div>
+
+        </header>
+
+        <main class="admin-content">
+
+            <!-- PAGE INTRODUCTION -->
+            <section class="admin-page-intro">
+                <div>
+                    <p class="admin-eyebrow">INSTITUTIONAL ONBOARDING</p>
+                    <h2>Review applications</h2>
+                    <p>
+                        Review institution details and manage partnership requests.
+                    </p>
+                </div>
+
+                <button type="button"
+                        class="admin-btn"
+                        id="applications-refresh">
+                    Refresh
+                </button>
+            </section>
+
+            <!-- APPLICATION SUMMARY -->
+            <section class="admin-summary-grid"
+                     aria-label="Application summary">
+
+                <article class="admin-summary-card">
+                    <span>Total applications</span>
+                    <strong id="summary-total">—</strong>
+                    <small>All submitted applications</small>
+                </article>
+
+                <article class="admin-summary-card">
+                    <span>Pending review</span>
+                    <strong id="summary-pending">—</strong>
+                    <small>Awaiting a decision</small>
+                </article>
+
+                <article class="admin-summary-card">
+                    <span>Under review</span>
+                    <strong id="summary-review">—</strong>
+                    <small>Currently being reviewed</small>
+                </article>
+
+                <article class="admin-summary-card">
+                    <span>Approved</span>
+                    <strong id="summary-approved">—</strong>
+                    <small>Approved institutions</small>
+                </article>
+
+            </section>
+
+            <!-- APPLICATION TABLE -->
+            <section class="admin-card">
+
+                <header class="admin-card-header">
+                    <div>
+                        <h2 class="admin-card-title">All applications</h2>
+                        <p class="admin-card-subtitle"
+                           id="applications-result-count">
+                            Connect the applications API to load records.
+                        </p>
+                    </div>
+                </header>
+
+                <!-- SEARCH AND FILTERS -->
+                <div class="admin-toolbar">
+
+                    <div class="admin-toolbar-search">
+                        <svg viewBox="0 0 24 24"
+                             fill="none"
+                             aria-hidden="true">
+                            <circle cx="10.5" cy="10.5" r="6.5"/>
+                            <path d="m15.5 15.5 5 5"/>
+                        </svg>
+
+                        <input id="applications-search"
+                               type="search"
+                               placeholder="Search application, institution, email..."
+                               aria-label="Search applications">
+                    </div>
+
+                    <select id="applications-status"
+                            class="admin-toolbar-select"
+                            aria-label="Filter by status">
+                        <option value="">All statuses</option>
+                        <option value="submitted">Pending</option>
+                        <option value="under_review">Under review</option>
+                        <option value="changes_requested">Changes requested</option>
+                        <option value="approved">Approved</option>
+                        <option value="rejected">Rejected</option>
+                    </select>
+
+                    <select id="applications-type"
+                            class="admin-toolbar-select"
+                            aria-label="Filter by institution type">
+                        <option value="">All institution types</option>
+                        <option value="college">College</option>
+                        <option value="university">University</option>
+                        <option value="school">School</option>
+                        <option value="training_institute">Training institute</option>
+                        <option value="other">Other</option>
+                    </select>
+
+                    <button type="button"
+                            class="admin-btn admin-btn-light"
+                            id="applications-clear-filters">
+                        Clear filters
+                    </button>
+
+                </div>
+
+                <!-- TABLE -->
+                <div class="admin-table-wrap">
+                    <table class="admin-table">
+
+                        <thead>
+                            <tr>
+                                <th>Application</th>
+                                <th>Institution</th>
+                                <th>Representative</th>
+                                <th>Location</th>
+                                <th>Submitted</th>
+                                <th>Status</th>
+                                <th>Action</th>
+                            </tr>
+                        </thead>
+
+                        <tbody id="applications-table-body">
+                            <tr>
+                                <td colspan="7">
+                                    <div class="admin-empty-state">
+                                        <strong>Loading applications</strong>
+                                        <p>Retrieving application records.</p>
+                                    </div>
+                                </td>
+                            </tr>
+                        </tbody>
+
+                    </table>
+                </div>
+
+                <!-- PAGINATION -->
+                <footer class="admin-table-footer">
+
+                    <span id="applications-pagination-label">
+                        0 applications
+                    </span>
+
+                    <div class="admin-pagination">
+
+                        <button type="button"
+                                class="admin-btn admin-btn-light"
+                                id="applications-prev"
+                                disabled>
+                            Previous
+                        </button>
+
+                        <span id="applications-page-number">Page 1</span>
+
+                        <button type="button"
+                                class="admin-btn admin-btn-light"
+                                id="applications-next"
+                                disabled>
+                            Next
+                        </button>
+
+                    </div>
+
+                </footer>
+
+            </section>
+
+        </main>
+    </div>
+</div>
+
+<!-- APPLICATION REVIEW MODAL -->
+<div class="admin-modal-backdrop"
+     id="application-detail-modal"
+     aria-hidden="true">
+
+    <section class="admin-modal"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="app-detail-title">
+
+        <header class="admin-modal-header">
+
+            <div>
+                <p class="admin-eyebrow">APPLICATION REVIEW</p>
+
+                <h2 class="admin-modal-title" id="app-detail-title">
+                    Application details
+                </h2>
+
+                <p class="admin-card-subtitle" id="app-detail-number">—</p>
+            </div>
+
+            <button type="button"
+                    class="admin-modal-close"
+                    id="application-modal-close"
+                    aria-label="Close details">
+                ×
+            </button>
+
+        </header>
+
+        <div class="admin-modal-body">
+
+            <div class="admin-detail-grid"
+                 id="application-detail-grid"></div>
+
+            <div class="admin-form-field">
+                <label for="review-notes">Internal review notes</label>
+
+                <textarea id="review-notes"
+                          rows="4"
+                          placeholder="Add review notes or explain requested changes..."></textarea>
+
+                <small>
+                    Notes are submitted only when a connected review API supports them.
+                </small>
+            </div>
+<section id="institution-invitation-panel" class="admin-card" hidden>
+    <h3>Institution Admin Invitation</h3>
+    <p>
+        This institution is approved. Send an invitation to its
+        verified official email address.
+    </p>
+
+    <div class="admin-form-field">
+        <label for="invitation-email">Recipient email</label>
+        <input
+            type="email"
+            id="invitation-email"
+            maxlength="254"
+            autocomplete="email"
+            placeholder="admin@institution.edu"
+            required
+        >
+        <small>
+            For security, the recipient must match the institution's
+            verified official email.
+        </small>
+    </div>
+
+    <button type="button" class="admin-btn admin-btn-primary"
+            id="send-institution-invitation">
+        Send Invitation Email
+    </button>
+
+    <p id="invitation-email-status" role="status" aria-live="polite"></p>
+</section>
+        </div>
+
+<!-- Institution invitation panel -->
+
+
+        <footer class="admin-modal-footer">
+
+            <button type="button"
+                    class="admin-btn"
+                    data-review-status="under_review">
+                Mark under review
+            </button>
+
+            <button type="button"
+                    class="admin-btn"
+                    data-review-status="changes_requested">
+                Request changes
+            </button>
+
+            <button type="button"
+                    class="admin-btn admin-btn-danger"
+                    data-review-status="rejected">
+                Reject
+            </button>
+
+            <button type="button"
+                    class="admin-btn admin-btn-primary"
+                    data-review-status="approved">
+                Approve
+            </button>
+
+        </footer>
+
+    </section>
+</div>
+
+<!-- TOAST NOTIFICATIONS -->
+<div id="admin-toast-container"
+     class="admin-toast-container"
+     aria-live="polite"></div>
+
+</body>
+</html>

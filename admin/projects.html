@@ -1,0 +1,550 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="theme-color" content="#F7F4EE">
+    <meta name="description" content="Manage Foundev projects, pricing and publication.">
+    <title>Projects — Foundev Super Admin</title>
+
+    <link rel="stylesheet" href="css/admin.css">
+    <link rel="stylesheet" href="css/admin-sidebar.css">
+    <link rel="stylesheet" href="css/admin-projects.css">
+
+    <script src="js/admin-layout.js" defer></script>
+    <script src="js/admin-projects.js" defer></script>
+</head>
+<body class="admin-page admin-dashboard-body">
+
+<div class="admin-layout">
+
+    <aside class="admin-sidebar" id="admin-sidebar">
+        <div class="admin-sidebar-header">
+            <a href="dashboard.html" class="admin-sidebar-brand">
+                <img src="../assets/images/foundev-logo.png" alt="Foundev">
+            </a>
+            <span class="admin-sidebar-label">ADMIN CONSOLE</span>
+        </div>
+
+        <nav class="admin-sidebar-nav" aria-label="Admin navigation">
+            <div class="admin-nav-section">
+                <span class="admin-nav-heading">WORKSPACE</span>
+
+                <a class="admin-nav-link" href="dashboard.html">
+                    <span class="admin-nav-label">Overview</span>
+                </a>
+                <a class="admin-nav-link" href="institute-applications.html">
+                    <span class="admin-nav-label">Institute Applications</span>
+                    <span class="admin-nav-badge" id="admin-pending-badge" hidden>0</span>
+                </a>
+                <a class="admin-nav-link" href="institutions.html">
+                    <span class="admin-nav-label">Institutions</span>
+                </a>
+                <a class="admin-nav-link" href="students.html">
+                    <span class="admin-nav-label">Students</span>
+                </a>
+                <a class="admin-nav-link" href="mentors.html">
+                    <span class="admin-nav-label">Mentors</span>
+                </a>
+                <a class="admin-nav-link active"
+                   href="projects.html"
+                   aria-current="page">
+                    <span class="admin-nav-label">Projects</span>
+                </a>
+            </div>
+
+            <div class="admin-nav-section">
+                <span class="admin-nav-heading">INSIGHTS &amp; CONTROL</span>
+                <a class="admin-nav-link" href="analytics.html">
+                    <span class="admin-nav-label">AI Analytics</span>
+                </a>
+                <a class="admin-nav-link" href="audit-logs.html">
+                    <span class="admin-nav-label">Audit Logs</span>
+                </a>
+                <a class="admin-nav-link" href="settings.html">
+                    <span class="admin-nav-label">Settings</span>
+                </a>
+            </div>
+        </nav>
+
+        <div class="admin-sidebar-bottom">
+            <div class="admin-sidebar-help">
+                <span class="admin-help-dot"></span>
+                <div>
+                    <strong>Admin workspace</strong>
+                    <small>Foundev platform control</small>
+                </div>
+            </div>
+
+            <button type="button" class="admin-logout-btn" id="admin-logout-btn">
+                Sign out
+            </button>
+
+            <div class="admin-sidebar-version">FOUNDEV ADMIN · V1.0</div>
+        </div>
+    </aside>
+
+    <div class="admin-sidebar-backdrop" id="admin-sidebar-backdrop"></div>
+
+    <div class="admin-main-area">
+        <header class="admin-topbar">
+            <div class="admin-topbar-left">
+                <button type="button"
+                        class="admin-sidebar-toggle"
+                        id="admin-sidebar-toggle"
+                        aria-label="Open navigation"
+                        aria-controls="admin-sidebar"
+                        aria-expanded="false">
+                    ☰
+                </button>
+
+                <div class="admin-topbar-meta">
+                    <nav class="admin-breadcrumbs" aria-label="Breadcrumb">
+                        <span>Super Admin</span>
+                        <span aria-hidden="true">/</span>
+                        <span>Projects</span>
+                    </nav>
+                    <h1 class="admin-page-title">Project Management</h1>
+                </div>
+            </div>
+
+            <div class="admin-topbar-right">
+                <div class="admin-topbar-date" id="admin-current-date"></div>
+                <div class="admin-user">
+                    <div class="admin-user-avatar" id="admin-user-avatar">A</div>
+                    <div class="admin-user-meta">
+                        <span class="admin-user-name" id="admin-user-name">
+                            Administrator
+                        </span>
+                        <span class="admin-user-role">Super Admin</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <main class="admin-content">
+
+            <section class="admin-welcome-banner project-welcome-banner">
+                <div class="admin-welcome-copy">
+                    <span class="admin-eyebrow">PROJECT ECOSYSTEM</span>
+                    <h2>Build the <span>catalogue.</span></h2>
+                    <p>
+                        Manage project packages, organise domains, set student pricing
+                        and control what appears across Foundev.
+                    </p>
+                </div>
+                <div class="admin-welcome-decoration" aria-hidden="true">
+                    <div class="admin-decoration-ring admin-decoration-ring-one"></div>
+                    <div class="admin-decoration-ring admin-decoration-ring-two"></div>
+                    <div class="admin-decoration-center">P</div>
+                </div>
+            </section>
+
+            <!-- PROJECT METRICS -->
+            <section class="admin-section">
+                <div class="admin-section-heading">
+                    <div>
+                        <span class="admin-section-kicker">AT A GLANCE</span>
+                        <h2>Project overview</h2>
+                    </div>
+                    <span class="admin-data-label">
+                        <span class="admin-data-dot"></span>
+                        <span id="project-data-status">Connecting to catalogue</span>
+                    </span>
+                </div>
+
+                <div class="admin-summary-grid project-summary-grid">
+                    <article class="admin-card admin-stat-card">
+                        <div class="admin-stat-top">
+                            <span class="admin-stat-label">Total projects</span>
+                        </div>
+                        <div class="admin-stat-value" id="metric-total">—</div>
+                        <div class="admin-stat-footer">All catalogue records</div>
+                    </article>
+
+                    <article class="admin-card admin-stat-card">
+                        <div class="admin-stat-top">
+                            <span class="admin-stat-label">Published</span>
+                        </div>
+                        <div class="admin-stat-value" id="metric-published">—</div>
+                        <div class="admin-stat-footer">Available for discovery</div>
+                    </article>
+
+                    <article class="admin-card admin-stat-card">
+                        <div class="admin-stat-top">
+                            <span class="admin-stat-label">Mini projects</span>
+                        </div>
+                        <div class="admin-stat-value" id="metric-mini">—</div>
+                        <div class="admin-stat-footer">Smaller-scope projects</div>
+                    </article>
+
+                    <article class="admin-card admin-stat-card">
+                        <div class="admin-stat-top">
+                            <span class="admin-stat-label">Major projects</span>
+                        </div>
+                        <div class="admin-stat-value" id="metric-major">—</div>
+                        <div class="admin-stat-footer">Larger-scope projects</div>
+                    </article>
+                </div>
+            </section>
+
+            <!-- CREATE / EDIT PROJECT -->
+            <section class="admin-section" id="project-form-section">
+                <div class="admin-section-heading">
+                    <div>
+                        <span class="admin-section-kicker">CATALOGUE MANAGEMENT</span>
+                        <h2 id="project-form-heading">Add a project</h2>
+                    </div>
+                    <span class="project-form-indicator" id="project-form-mode">
+                        NEW PROJECT
+                    </span>
+                </div>
+
+                <article class="admin-card project-editor-card">
+                    <div class="project-editor-intro">
+                        <h3>Project information</h3>
+                        <p>
+                            Enter the details students and institute administrators
+                            will see when browsing the catalogue.
+                        </p>
+                    </div>
+
+                    <form id="project-form" enctype="multipart/form-data">
+                        <input type="hidden" id="project-id" name="id">
+
+                        <div class="project-form-grid">
+
+                            <div class="admin-form-field">
+                                <label for="project-name">Project name *</label>
+                                <input type="text"
+                                       id="project-name"
+                                       name="title"
+                                       maxlength="180"
+                                       placeholder="e.g. AI-Based Disease Prediction"
+                                       required>
+                            </div>
+
+                            <div class="admin-form-field">
+                                <label for="project-domain">Domain *</label>
+                                <select id="project-domain" name="domain" required>
+                                    <option value="">Select a domain</option>
+                                    <option>Artificial Intelligence &amp; Machine Learning</option>
+                                    <option>Data Science &amp; Analytics</option>
+                                    <option>Cybersecurity</option>
+                                    <option>Web Development</option>
+                                    <option>Mobile App Development</option>
+                                    <option>Internet of Things</option>
+                                    <option>Cloud Computing</option>
+                                    <option>Blockchain</option>
+                                    <option>Computer Vision</option>
+                                    <option>Natural Language Processing</option>
+                                    <option>Robotics</option>
+                                    <option>Software Engineering</option>
+                                    <option>Embedded Systems</option>
+                                    <option>Other</option>
+                                </select>
+                            </div>
+
+                            <div class="admin-form-field project-full-width">
+                                <label>Project classification *</label>
+                                <div class="project-type-options">
+                                    <label class="project-type-card">
+                                        <input type="radio"
+                                               name="project_type"
+                                               value="mini"
+                                               required>
+                                        <span class="project-type-content">
+                                            <strong>Mini Project</strong>
+                                            <small>Focused implementation with a smaller scope.</small>
+                                        </span>
+                                    </label>
+
+                                    <label class="project-type-card">
+                                        <input type="radio"
+                                               name="project_type"
+                                               value="major"
+                                               required>
+                                        <span class="project-type-content">
+                                            <strong>Major Project</strong>
+                                            <small>Comprehensive project with broader functionality.</small>
+                                        </span>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="admin-form-field project-full-width">
+                                <label for="project-description">Description *</label>
+                                <textarea id="project-description"
+                                          name="description"
+                                          rows="4"
+                                          maxlength="5000"
+                                          placeholder="Describe the project, its features and learning outcomes."
+                                          required></textarea>
+                            </div>
+
+                            <div class="admin-form-field project-full-width">
+                                <label for="project-tech-stack">Technology stack</label>
+                                <input type="text"
+                                       id="project-tech-stack"
+                                       name="technologies"
+                                       maxlength="1000"
+                                       placeholder="Python, Flask, MySQL, HTML, CSS">
+                            </div>
+
+                            <!-- ZIP UPLOAD: matches project-upload.php -->
+                            <div class="admin-form-field project-full-width">
+                                <label for="project-file">Project source ZIP *</label>
+
+                                <div class="project-upload-box">
+                                    <div class="project-upload-symbol" aria-hidden="true">
+                                        <svg viewBox="0 0 24 24" fill="none">
+                                            <path d="M3 7.5A2.5 2.5 0 0 1 5.5 5H10L12 7H18.5A2.5 2.5 0 0 1 21 9.5V18A2 2 0 0 1 19 20H5A2 2 0 0 1 3 18V7.5Z"/>
+                                            <path d="M12 11V17M9.5 13.5L12 11L14.5 13.5"/>
+                                        </svg>
+                                    </div>
+
+                                    <div class="project-upload-copy">
+                                        <strong>Select a ZIP archive</strong>
+                                        <span>
+                                            Compress the complete source folder into a ZIP file.
+                                            Do not include passwords, API keys or private credentials.
+                                        </span>
+                                    </div>
+
+                                    <input type="file"
+                                           id="project-file"
+                                           name="project_file"
+                                           accept=".zip,application/zip">
+                                </div>
+
+                                <p class="project-help-text" id="project-file-summary">
+                                    No ZIP file selected.
+                                </p>
+                                <p class="project-help-text">
+                                    Maximum upload size must match the PHP server configuration.
+                                </p>
+                            </div>
+
+                            <div class="project-full-width">
+                                <div class="project-subsection-heading">
+                                    <h3>Pricing</h3>
+                                    <p>Set separate prices for each customer group.</p>
+                                </div>
+
+                                <div class="project-pricing-grid">
+                                    <div class="project-price-panel">
+                                        <span class="project-price-audience">EXTERNAL STUDENTS</span>
+                                        <label for="external-price">External student price *</label>
+                                        <div class="project-price-control">
+                                            <span>₹</span>
+                                            <input type="number"
+                                                   id="external-price"
+                                                   name="external_price"
+                                                   min="0"
+                                                   max="10000000"
+                                                   step="0.01"
+                                                   placeholder="999.00"
+                                                   required>
+                                        </div>
+                                        <small>For individual external student purchases.</small>
+                                    </div>
+
+                                    <div class="project-price-panel">
+                                        <span class="project-price-audience">UNIVERSITY STUDENTS</span>
+                                        <label for="university-price">University price *</label>
+                                        <div class="project-price-control">
+                                            <span>₹</span>
+                                            <input type="number"
+                                                   id="university-price"
+                                                   name="university_price"
+                                                   min="0"
+                                                   max="10000000"
+                                                   step="0.01"
+                                                   placeholder="699.00"
+                                                   required>
+                                        </div>
+                                        <small>For eligible university workspace purchases.</small>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="admin-form-field">
+                                <label for="project-status">Publication status</label>
+                                <select id="project-status" name="status">
+                                    <option value="draft">Draft — not listed</option>
+                                    <option value="published">Published — available for discovery</option>
+                                </select>
+                            </div>
+
+                            <div class="admin-form-field">
+                                <label for="project-featured">Website placement</label>
+                                <select id="project-featured" name="is_featured">
+                                    <option value="0">Standard listing</option>
+                                    <option value="1">Feature on website</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div class="project-form-notice">
+                            Publishing makes a project eligible for discovery.
+                            Checkout eligibility, pricing and file access must also be
+                            enforced by the backend.
+                        </div>
+
+                        <div class="project-form-actions">
+                            <button type="button"
+                                    class="admin-secondary-button"
+                                    id="reset-project-form">
+                                Clear form
+                            </button>
+                            <button type="submit"
+                                    class="admin-primary-button"
+                                    id="save-project-button">
+                                Upload project
+                            </button>
+                        </div>
+
+                        <div class="project-progress" id="project-progress" hidden>
+                            <div class="project-progress-track">
+                                <div class="project-progress-fill" id="project-progress-fill"></div>
+                            </div>
+                            <p id="project-progress-label">Preparing upload…</p>
+                        </div>
+                    </form>
+                </article>
+            </section>
+
+            <!-- PROJECT CATALOGUE -->
+            <section class="admin-section">
+                <div class="admin-section-heading">
+                    <div>
+                        <span class="admin-section-kicker">PROJECT LIBRARY</span>
+                        <h2>All projects</h2>
+                    </div>
+                    <button type="button"
+                            class="admin-secondary-button"
+                            id="refresh-projects">
+                        Refresh list
+                    </button>
+                </div>
+
+                <article class="admin-card project-catalogue-card">
+                    <div class="project-filter-bar">
+                        <div class="admin-input-wrap project-search-wrap">
+                            <svg class="admin-input-icon" viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                                <circle cx="10.8" cy="10.8" r="6.8"/>
+                                <path d="M16 16L21 21"/>
+                            </svg>
+                            <input type="search"
+                                   id="project-search"
+                                   placeholder="Search projects..."
+                                   aria-label="Search projects">
+                        </div>
+
+                        <select id="filter-domain" aria-label="Filter by domain">
+                            <option value="">All domains</option>
+                            <option>Artificial Intelligence &amp; Machine Learning</option>
+                            <option>Data Science &amp; Analytics</option>
+                            <option>Cybersecurity</option>
+                            <option>Web Development</option>
+                            <option>Mobile App Development</option>
+                            <option>Internet of Things</option>
+                            <option>Cloud Computing</option>
+                            <option>Blockchain</option>
+                            <option>Computer Vision</option>
+                            <option>Natural Language Processing</option>
+                            <option>Robotics</option>
+                            <option>Software Engineering</option>
+                            <option>Embedded Systems</option>
+                            <option>Other</option>
+                        </select>
+
+                        <select id="filter-type" aria-label="Filter by project type">
+                            <option value="">All types</option>
+                            <option value="mini">Mini projects</option>
+                            <option value="major">Major projects</option>
+                        </select>
+
+                        <select id="filter-status" aria-label="Filter by status">
+                            <option value="">All statuses</option>
+                            <option value="published">Published</option>
+                            <option value="draft">Draft</option>
+                        </select>
+                    </div>
+
+                    <div class="admin-table-wrap">
+                        <table class="admin-table project-table">
+                            <thead>
+                                <tr>
+                                    <th>Project</th>
+                                    <th>Classification</th>
+                                    <th>External price</th>
+                                    <th>University price</th>
+                                    <th>Status</th>
+                                    <th>Created</th>
+                                    <th>Actions</th>
+                                </tr>
+                            </thead>
+                            <tbody id="project-table-body">
+                                <tr>
+                                    <td colspan="7">
+                                        <div class="admin-empty-state">
+                                            <strong>Loading projects</strong>
+                                            <p>Connecting to the project catalogue.</p>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+
+                    <div class="project-table-footer">
+                        <span id="project-result-count">Loading catalogue…</span>
+                    </div>
+                </article>
+            </section>
+        </main>
+    </div>
+</div>
+
+<div id="admin-toast-container" class="admin-toast-container"></div>
+
+<!-- PROJECT DETAILS MODAL -->
+<div class="admin-modal-backdrop project-detail-backdrop" id="project-detail-modal">
+    <section class="admin-modal project-detail-modal"
+             role="dialog"
+             aria-modal="true"
+             aria-labelledby="project-detail-title">
+
+        <header class="admin-modal-header">
+            <div>
+                <span class="admin-section-kicker">CATALOGUE RECORD</span>
+                <h2 class="admin-modal-title" id="project-detail-title">
+                    Project details
+                </h2>
+            </div>
+            <button type="button"
+                    class="admin-modal-close"
+                    id="close-project-details"
+                    aria-label="Close project details">
+                &times;
+            </button>
+        </header>
+
+        <div class="admin-modal-body">
+            <div class="project-detail-grid" id="project-detail-content"></div>
+        </div>
+
+        <footer class="admin-modal-footer">
+            <button type="button"
+                    class="admin-secondary-button"
+                    id="close-project-details-footer">
+                Close
+            </button>
+        </footer>
+    </section>
+</div>
+
+</body>
+</html>
