@@ -1,0 +1,1038 @@
+
+/* =========================================================
+   FOUNDEV — INSTITUTE PARTNERSHIP ONBOARDING
+   File: css/institute-onboarding.css
+
+   Uses shared design tokens from css/styles.css.
+   Do not redefine global design tokens here.
+   ========================================================= */
+
+
+/* =========================================================
+   1. PAGE FOUNDATION
+   ========================================================= */
+
+#institute-onboarding {
+    width: min(
+        calc(100% - var(--page-gutter) * 2),
+        900px
+    );
+    margin-inline: auto;
+    color: var(--color-ink);
+}
+
+#institute-onboarding *,
+#institute-onboarding *::before,
+#institute-onboarding *::after {
+    box-sizing: border-box;
+}
+
+#institute-onboarding button,
+#institute-onboarding input,
+#institute-onboarding select,
+#institute-onboarding textarea {
+    font: inherit;
+}
+
+#institute-onboarding a {
+    color: inherit;
+}
+
+body {
+    background: var(--color-bg);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+}
+
+#institute-onboarding section {
+    scroll-margin-top: 100px;
+}
+
+#institute-onboarding [hidden] {
+    display: none !important;
+}
+
+
+/* =========================================================
+   2. INTRODUCTION
+   ========================================================= */
+
+.intro {
+    padding-block: clamp(60px, 9vw, 105px) 42px;
+}
+
+.eyebrow,
+.step-kicker {
+    display: inline-block;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    line-height: 1.8;
+    text-transform: uppercase;
+}
+
+.intro h1 {
+    max-width: 820px;
+    margin: 22px 0 20px;
+    color: var(--color-ink);
+    font-size: clamp(42px, 7vw, 76px);
+    font-weight: 550;
+    letter-spacing: -0.075em;
+    line-height: 0.99;
+}
+
+.intro h1 span {
+    display: block;
+    margin-top: 8px;
+    color: var(--color-muted);
+}
+
+.intro > p {
+    max-width: 610px;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: clamp(14px, 1.5vw, 16px);
+    line-height: 1.9;
+}
+
+.trust-points {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 22px;
+    margin-top: 26px;
+}
+
+.trust-points span {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    color: var(--color-ink);
+    font-size: 11px;
+    line-height: 1.7;
+}
+
+.trust-points span::first-letter {
+    color: var(--color-brown);
+}
+
+
+/* =========================================================
+   3. APPLICATION CARD
+   ========================================================= */
+
+.application-card {
+    overflow: hidden;
+    padding: clamp(22px, 5vw, 48px);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-lg);
+    box-shadow: var(--shadow-soft);
+}
+
+.card-heading {
+    display: flex;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 24px;
+}
+
+.card-heading > div {
+    min-width: 0;
+}
+
+.card-heading h2 {
+    max-width: 580px;
+    margin: 15px 0 10px;
+    color: var(--color-ink);
+    font-size: clamp(25px, 4vw, 38px);
+    font-weight: 550;
+    letter-spacing: -0.06em;
+    line-height: 1.12;
+}
+
+.card-heading p {
+    max-width: 540px;
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 13px;
+    line-height: 1.85;
+}
+
+.step-counter {
+    display: inline-flex;
+    flex-shrink: 0;
+    align-items: center;
+    justify-content: center;
+    min-width: 75px;
+    min-height: 35px;
+    padding: 8px 12px;
+    background: var(--color-surface-muted);
+    border-radius: var(--radius-pill);
+    color: var(--color-brown);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.05em;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+   4. PROGRESS INDICATOR
+   ========================================================= */
+
+.progress-track {
+    overflow: hidden;
+    width: 100%;
+    height: 4px;
+    margin-top: 34px;
+    background: var(--color-surface-muted);
+    border-radius: var(--radius-pill);
+}
+
+.progress-track > span {
+    display: block;
+    width: 16.6667%;
+    height: 100%;
+    background: var(--color-ink);
+    border-radius: inherit;
+    transition: width var(--duration-normal) var(--ease-fluid);
+}
+
+.step-labels {
+    display: grid;
+    grid-template-columns: repeat(6, minmax(0, 1fr));
+    gap: 8px;
+    margin-top: 13px;
+}
+
+.step-labels span {
+    color: var(--color-muted);
+    font-size: 10px;
+    line-height: 1.5;
+    transition: color var(--duration-fast) ease;
+}
+
+.step-labels span.active {
+    color: var(--color-ink);
+    font-weight: 650;
+}
+
+
+/* =========================================================
+   5. FORM STEP LAYOUT
+   ========================================================= */
+
+#institute-application-form {
+    margin-top: 38px;
+}
+
+.form-step {
+    animation: institute-step-enter 240ms var(--ease-fluid) both;
+}
+
+@keyframes institute-step-enter {
+    from {
+        opacity: 0;
+        transform: translateY(7px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.form-step > .step-kicker {
+    margin-bottom: 14px;
+}
+
+.form-step > h3 {
+    max-width: 640px;
+    margin: 0 0 10px;
+    color: var(--color-ink);
+    font-size: clamp(23px, 3.4vw, 32px);
+    font-weight: 550;
+    letter-spacing: -0.055em;
+    line-height: 1.2;
+}
+
+.section-description {
+    max-width: 600px;
+    margin: 0 0 30px;
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   6. INPUT FIELDS
+   ========================================================= */
+
+.field {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    margin-bottom: 23px;
+}
+
+.field label {
+    color: var(--color-ink);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.6;
+}
+
+.optional {
+    margin-left: 5px;
+    color: var(--color-muted);
+    font-size: 10px;
+    font-weight: 400;
+}
+
+.field input,
+.field select,
+.field textarea {
+    display: block;
+    width: 100%;
+    min-width: 0;
+    min-height: 48px;
+    padding: 13px 15px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border-strong);
+    border-radius: var(--radius-sm);
+    outline: none;
+    color: var(--color-ink);
+    font-size: 13px;
+    line-height: 1.5;
+    transition:
+        border-color var(--duration-fast) ease,
+        box-shadow var(--duration-fast) ease,
+        background var(--duration-fast) ease;
+}
+
+.field textarea {
+    min-height: 110px;
+    resize: vertical;
+}
+
+.field select {
+    cursor: pointer;
+}
+
+.field input::placeholder,
+.field textarea::placeholder {
+    color: var(--color-muted);
+    opacity: 0.75;
+}
+
+.field input:hover,
+.field select:hover,
+.field textarea:hover {
+    border-color: var(--color-border-strong);
+}
+
+.field input:focus,
+.field select:focus,
+.field textarea:focus {
+    border-color: var(--color-brown);
+    box-shadow: 0 0 0 3px rgba(65, 45, 21, 0.08);
+}
+
+.field input:disabled,
+.field select:disabled,
+.field textarea:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.field input[aria-invalid="true"],
+.field select[aria-invalid="true"],
+.field textarea[aria-invalid="true"] {
+    border-color: #B54738;
+    box-shadow: 0 0 0 3px rgba(181, 71, 56, 0.07);
+}
+
+.field-row {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+}
+
+.field-row .field {
+    min-width: 0;
+}
+
+.field-error {
+    display: block;
+    min-height: 0;
+    color: #B54738;
+    font-size: 11px;
+    line-height: 1.6;
+}
+
+.field-error:empty {
+    display: none;
+}
+
+.field-hint {
+    display: block;
+    color: var(--color-muted);
+    font-size: 11px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   7. VERIFICATION PANEL
+   ========================================================= */
+
+.verification-panel {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: clamp(22px, 4vw, 32px);
+    background: var(--color-bg);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-md);
+}
+
+.verification-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    margin-bottom: 20px;
+    background: var(--color-surface-muted);
+    border-radius: 50%;
+    color: var(--color-brown);
+    font-size: 20px;
+}
+
+.verification-panel h4 {
+    margin: 0 0 10px;
+    color: var(--color-ink);
+    font-size: 18px;
+    font-weight: 600;
+    letter-spacing: -0.035em;
+}
+
+.verification-panel > p {
+    margin: 0 0 12px;
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.verification-panel > .field-hint {
+    max-width: 510px;
+}
+
+.verification-status {
+    display: inline-flex;
+    align-items: center;
+    min-height: 29px;
+    margin-top: 9px;
+    padding: 6px 11px;
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-pill);
+    color: var(--color-muted);
+    font-size: 10px;
+    font-weight: 600;
+}
+
+.verification-status.is-verified {
+    color: #286846;
+    border-color: rgba(40, 104, 70, 0.25);
+    background: rgba(40, 104, 70, 0.06);
+}
+
+
+/* =========================================================
+   8. NOTICES
+   ========================================================= */
+
+.notice {
+    margin-top: 20px;
+    padding: 15px 17px;
+    background: rgba(225, 220, 201, 0.25);
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    color: var(--color-muted);
+    font-size: 11px;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   9. APPLICATION REVIEW
+   ========================================================= */
+
+.review-summary {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    margin-bottom: 26px;
+    border-top: 1px solid var(--color-border);
+}
+
+.review-group {
+    padding-block: 20px;
+    border-bottom: 1px solid var(--color-border);
+}
+
+.review-group h4 {
+    margin: 0 0 15px;
+    color: var(--color-ink);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+}
+
+.review-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 17px 24px;
+}
+
+.review-item {
+    min-width: 0;
+}
+
+.review-item .review-label {
+    display: block;
+    margin-bottom: 6px;
+    color: var(--color-muted);
+    font-size: 10px;
+    line-height: 1.6;
+}
+
+.review-item .review-value {
+    display: block;
+    color: var(--color-ink);
+    font-size: 12px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+    white-space: pre-wrap;
+}
+
+.consent-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    margin-top: 26px;
+    color: var(--color-ink);
+    font-size: 12px;
+    line-height: 1.9;
+    cursor: pointer;
+}
+
+.consent-row input {
+    flex: 0 0 auto;
+    width: 17px;
+    height: 17px;
+    margin: 3px 0 0;
+    accent-color: var(--color-ink);
+    cursor: pointer;
+}
+
+.consent-row input:focus-visible {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 3px;
+}
+
+#consent-error {
+    margin-top: 8px;
+}
+
+
+/* =========================================================
+   10. FORM ACTION BUTTONS
+   ========================================================= */
+
+.form-actions {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    margin-top: 34px;
+    padding-top: 25px;
+    border-top: 1px solid var(--color-border);
+}
+
+#institute-onboarding .button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    min-height: 46px;
+    padding: 12px 21px;
+    border: 1px solid transparent;
+    border-radius: var(--radius-pill);
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.4;
+    text-decoration: none;
+    cursor: pointer;
+    transition:
+        background var(--duration-fast) ease,
+        color var(--duration-fast) ease,
+        border-color var(--duration-fast) ease,
+        transform var(--duration-fast) ease,
+        opacity var(--duration-fast) ease;
+}
+
+#institute-onboarding .button:active:not(:disabled) {
+    transform: scale(0.98);
+}
+
+#institute-onboarding .button:focus-visible {
+    outline: 2px solid var(--color-brown);
+    outline-offset: 4px;
+}
+
+#institute-onboarding .button-primary {
+    background: var(--color-ink);
+    border-color: var(--color-ink);
+    color: var(--color-bg);
+}
+
+#institute-onboarding .button-primary:hover:not(:disabled) {
+    background: transparent;
+    color: var(--color-ink);
+}
+
+#institute-onboarding .button-secondary {
+    background: transparent;
+    border-color: var(--color-border-strong);
+    color: var(--color-ink);
+}
+
+#institute-onboarding .button-secondary:hover:not(:disabled) {
+    background: var(--color-surface-muted);
+    border-color: var(--color-border-strong);
+}
+
+#institute-onboarding .button:disabled {
+    cursor: not-allowed;
+    opacity: 0.55;
+}
+
+#institute-onboarding #next-button,
+#institute-onboarding #submit-button {
+    margin-left: auto;
+}
+
+
+/* =========================================================
+   11. FORM FEEDBACK
+   ========================================================= */
+
+.form-message {
+    display: none;
+    margin-top: 20px;
+    padding: 14px 16px;
+    border: 1px solid var(--color-border);
+    border-radius: var(--radius-sm);
+    font-size: 12px;
+    line-height: 1.8;
+    overflow-wrap: anywhere;
+}
+
+.form-message:not(:empty) {
+    display: block;
+}
+
+.form-message.is-success {
+    background: rgba(40, 104, 70, 0.06);
+    border-color: rgba(40, 104, 70, 0.25);
+    color: #286846;
+}
+
+.form-message.is-error {
+    background: rgba(181, 71, 56, 0.06);
+    border-color: rgba(181, 71, 56, 0.25);
+    color: #B54738;
+}
+
+.form-message.is-info {
+    background: rgba(225, 220, 201, 0.25);
+    color: var(--color-muted);
+}
+
+
+/* =========================================================
+   12. SECURITY NOTE
+   ========================================================= */
+
+.security-note {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 9px;
+    margin: 25px 0 0;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 10px;
+    letter-spacing: 0.04em;
+    line-height: 1.8;
+    text-align: center;
+}
+
+
+/* =========================================================
+   13. PARTNERSHIP PROCESS
+   ========================================================= */
+
+.partnership-process {
+    padding-block: clamp(65px, 9vw, 110px);
+    border-top: 1px solid var(--color-border);
+}
+
+.partnership-process > h2 {
+    max-width: 600px;
+    margin: 16px 0 35px;
+    color: var(--color-ink);
+    font-size: clamp(32px, 4.5vw, 52px);
+    font-weight: 550;
+    letter-spacing: -0.06em;
+    line-height: 1.1;
+}
+
+.process-grid {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    border-top: 1px solid var(--color-border-strong);
+}
+
+.process-item {
+    min-width: 0;
+    padding: 24px 18px 20px 0;
+}
+
+.process-number {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 11px;
+}
+
+.process-item h3 {
+    margin: 20px 0 10px;
+    color: var(--color-ink);
+    font-size: 19px;
+    font-weight: 550;
+    letter-spacing: -0.04em;
+}
+
+.process-item p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+
+/* =========================================================
+   14. FOOTER
+   ========================================================= */
+
+.site-footer {
+    margin-top: 30px;
+}
+
+.site-footer .footer-main {
+    display: grid;
+    grid-template-columns: 1.7fr repeat(3, minmax(0, 1fr));
+    gap: 35px;
+    padding: 45px var(--page-gutter);
+    border-top: 1px solid var(--color-border);
+}
+
+.site-footer .footer-brand {
+    max-width: 300px;
+}
+
+.site-footer .footer-brand > p {
+    margin: 18px 0;
+    color: var(--color-muted);
+    font-size: 12px;
+    line-height: 1.9;
+}
+
+.site-footer .footer-tagline {
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    letter-spacing: 0.12em;
+}
+
+.site-footer .footer-column {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 13px;
+}
+
+.site-footer .footer-column h3 {
+    margin: 0 0 7px;
+    color: var(--color-muted);
+    font-family: var(--font-mono);
+    font-size: 9px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+}
+
+.site-footer .footer-column a,
+.site-footer .footer-bottom a {
+    color: var(--color-ink);
+    font-size: 11px;
+    line-height: 1.7;
+    text-decoration: none;
+    transition: color var(--duration-fast) ease;
+}
+
+.site-footer .footer-column a:hover,
+.site-footer .footer-bottom a:hover {
+    color: var(--color-muted);
+}
+
+.site-footer .footer-bottom {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    padding: 20px var(--page-gutter);
+    border-top: 1px solid var(--color-border);
+}
+
+.site-footer .footer-bottom p {
+    margin: 0;
+    color: var(--color-muted);
+    font-size: 10px;
+    line-height: 1.8;
+}
+
+
+/* =========================================================
+   15. TABLET RESPONSIVENESS
+   ========================================================= */
+
+@media (max-width: 900px) {
+    .site-footer .footer-main {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 35px 28px;
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .process-item {
+        padding: 22px 18px 22px 0;
+    }
+}
+
+
+/* =========================================================
+   16. MOBILE RESPONSIVENESS
+   ========================================================= */
+
+@media (max-width: 700px) {
+    #institute-onboarding {
+        width: calc(100% - 32px);
+    }
+
+    .intro {
+        padding-block: 48px 30px;
+    }
+
+    .intro h1 {
+        font-size: clamp(39px, 10vw, 58px);
+    }
+
+    .trust-points {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 9px;
+    }
+
+    .application-card {
+        padding: 23px 18px;
+        border-radius: var(--radius-md);
+    }
+
+    .card-heading {
+        gap: 12px;
+    }
+
+    .card-heading h2 {
+        font-size: 28px;
+    }
+
+    .step-counter {
+        min-width: 65px;
+        padding-inline: 9px;
+        font-size: 9px;
+    }
+
+    .step-labels {
+        gap: 5px;
+    }
+
+    .step-labels span {
+        font-size: 8px;
+        overflow-wrap: anywhere;
+    }
+
+    #institute-application-form {
+        margin-top: 30px;
+    }
+
+    .section-description {
+        margin-bottom: 24px;
+    }
+
+    .field-row {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+
+    .review-grid {
+        grid-template-columns: 1fr;
+        gap: 15px;
+    }
+
+    .form-actions {
+        gap: 10px;
+    }
+
+    #institute-onboarding .button {
+        min-height: 44px;
+        padding: 11px 15px;
+        font-size: 11px;
+    }
+
+    .partnership-process {
+        padding-block: 60px;
+    }
+
+    .partnership-process > h2 {
+        font-size: 36px;
+    }
+
+    .process-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+
+    .process-item {
+        padding-right: 12px;
+    }
+
+    .site-footer .footer-main {
+        gap: 32px 20px;
+        padding-block: 35px;
+    }
+}
+
+
+/* =========================================================
+   17. SMALL MOBILE DEVICES
+   ========================================================= */
+
+@media (max-width: 420px) {
+    #institute-onboarding {
+        width: calc(100% - 24px);
+    }
+
+    .intro h1 {
+        font-size: 38px;
+    }
+
+    .application-card {
+        padding: 20px 14px;
+    }
+
+    .card-heading {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-heading h2 {
+        font-size: 26px;
+    }
+
+    .step-counter {
+        align-self: flex-start;
+    }
+
+    .step-labels {
+        gap: 3px;
+    }
+
+    .step-labels span {
+        font-size: 7px;
+        letter-spacing: -0.02em;
+    }
+
+    .field input,
+    .field select,
+    .field textarea {
+        font-size: 12px;
+    }
+
+    .form-actions {
+        flex-wrap: wrap;
+    }
+
+    #institute-onboarding .button {
+        gap: 7px;
+        padding-inline: 12px;
+    }
+
+    .process-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .process-item {
+        padding: 20px 0;
+        border-bottom: 1px solid var(--color-border);
+    }
+
+    .site-footer .footer-main {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 16px;
+    }
+
+    .site-footer .footer-brand {
+        grid-column: 1 / -1;
+    }
+
+    .site-footer .footer-bottom {
+        align-items: flex-start;
+        flex-direction: column;
+        gap: 10px;
+    }
+}
+
+
+/* =========================================================
+   18. REDUCED MOTION ACCESSIBILITY
+   ========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+    #institute-onboarding *,
+    #institute-onboarding *::before,
+    #institute-onboarding *::after {
+        scroll-behavior: auto !important;
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
